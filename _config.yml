@@ -2,7 +2,7 @@
 title: salc2 blog
 #email: 
 description: > # this means to ignore newlines until "baseurl:"
-        This is not a big deal blog, here I just share my testing about technologies 
+        This blog is not a big deal, here I just share my testing about technologies 
         I like things like functional programming, asynchronous approaches, JVM ecosystem, 
         reactive programming, non-blocking, syntactic sugar, agile methodologies, eXtreme Programming,
         devops, nosql, computer graphics 2d/3d, unix's command lines.
