@@ -7,7 +7,7 @@
 
 // Our variables
 //$base-font-family: Helvetica, Arial, sans-serif;
-$base-font-family: 'Patrick Hand', cursive;
+$base-font-family: 'Mallanna', sans-serif;
 $base-font-size:   16px;
 $small-font-size:  $base-font-size * 0.875;
 $base-line-height: 1.5;
@@ -35,16 +35,59 @@ $on-laptop:        800px;
 //     }
 // }
 @mixin media-query($device) {
-    @media screen and (max-width: $device) {
-        @content;
-    }
+	@media screen and (max-width: $device) {
+		@content;
+	}
+	.circular {
+margin: 0 auto;
+	margin-bottom: 10px;
+width: 165px;
+height: 165px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+background: url(/images/githubprofile.jpg) no-repeat;
+	}
+
+	.socialIcons {
+width: 340px;
+height: 150px;
+margin: 0 auto;
+	}
+	svg,
+		.twitter,
+		.linkedin,
+		.github {
+display: inline-block;
+width: 64px;
+height: 64px;
+padding: 18px;
+		}
+	.twit,
+		.link,
+		.gith {
+fill: #3e3e3e;
+		}
+	.twit :hover {
+fill: #00acee;
+	}
+	.link :hover {
+fill: #007fb2;
+	}
+	.gith :hover {
+fill: #000;
+	}
+	.svg-hide {
+display: none;
+	}
+
 }
 
 
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
-        "base",
-        "layout",
-        "syntax-highlighting"
-;
+"base",
+	"layout",
+	"syntax-highlighting"
+	;

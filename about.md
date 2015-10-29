@@ -1,11 +1,9 @@
 ---
-layout: page
+layout: about
 title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
-
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+Hi I’m Javier and this is my blog.
+This blog is not a big deal, here I just share my testing about technologies I like. 
+I am focused on things like functional programming, asynchronous approaches, JVM ecosystem, reactive programming, non-blocking, syntactic sugar, agile methodologies, eXtreme Programming,devops, nosql, computer graphics design 2d/3d, unix's command lines.
