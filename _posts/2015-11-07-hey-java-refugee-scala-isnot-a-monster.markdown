@@ -12,7 +12,7 @@ categories: scala
 
 Why mystical monster?
 
-Java programmers tend to think because Scala is very different from Java that has things like data inference, functional approach, and syntactic sugar, are inconsistent and sometimes they think to develop things like Web applications, RESTful services and common applications we have to do magic and use non-traditional tools and approaches entirely new and unintelligible.
+Java programmers tend to think they can't use scala as usually they use java, Scala is very different from Java it has things like data inference, functional approach, and syntactic sugar, many _weird_ things, and for these reason are inconsistent. Sometimes they think to develop common application like Web applications, RESTful services we have to do magic and use non-traditional tools and approaches entirely new and unintelligible.
 
 The truth is that everything we do with Java, we can also make them with Scala. 
 So why not use it and take advantage of its features.
