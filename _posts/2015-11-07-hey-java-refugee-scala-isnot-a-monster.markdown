@@ -226,6 +226,8 @@ __Testing the services__
 
 And this is it!
 
+[Github source code here](https://github.com/salc2/scala-spring)
+
 ##Resources
 - [Scala API Docs](http://www.scala-lang.org/api/2.11.7/)
 - [Spring boot API Docs](http://docs.spring.io/spring-boot/docs/current/api/)
