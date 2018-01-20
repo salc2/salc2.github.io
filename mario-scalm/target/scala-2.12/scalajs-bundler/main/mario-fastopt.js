@@ -13031,8 +13031,6 @@ $c_Ljava_io_OutputStream.prototype.close__V = (function() {
 function $c_Lmario_Main$() {
   $c_O.call(this);
   this.gravity$1 = 0.0;
-  this.partialPosX$1 = 0;
-  this.partialPosY$1 = 0.0;
   this.applyGravity$1 = null;
   this.applyMotion$1 = null;
   this.walkLeft$1 = null;
@@ -13051,17 +13049,15 @@ $h_Lmario_Main$.prototype = $c_Lmario_Main$.prototype;
 $c_Lmario_Main$.prototype.init___ = (function() {
   $n_Lmario_Main$ = this;
   this.gravity$1 = 0.25;
-  this.partialPosX$1 = 100;
-  this.partialPosY$1 = ((-85.0) + $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerHeight));
   this.applyGravity$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
     return (function(mario$2) {
       var mario = $as_Lmario_Main$Mario(mario$2);
-      var x$5 = ((mario.y$1 > 0) ? (mario.vy$1 - $m_Lmario_Main$().gravity$1) : 0.0);
-      var x$6 = mario.x$1;
-      var x$7 = mario.y$1;
-      var x$8 = mario.vx$1;
-      var x$9 = mario.dir$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$6, x$7, x$8, x$5, x$9)
+      var x$7 = ((mario.y$1 > 0) ? (mario.vy$1 - $m_Lmario_Main$().gravity$1) : 0.0);
+      var x$8 = mario.x$1;
+      var x$9 = mario.y$1;
+      var x$10 = mario.vx$1;
+      var x$11 = mario.dir$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$8, x$9, x$10, x$7, x$11)
     })
   })(this));
   this.applyMotion$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2) {
@@ -13079,31 +13075,31 @@ $c_Lmario_Main$.prototype.init___ = (function() {
   this.walkLeft$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1) {
     return (function(x$1$2) {
       var x$1 = $as_Lmario_Main$Mario(x$1$2);
-      var x$11 = $m_Lmario_Main$Left$();
-      var x$12 = x$1.x$1;
-      var x$13 = x$1.y$1;
-      var x$14 = x$1.vy$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$12, x$13, (-1.5), x$14, x$11)
+      var x$13 = $m_Lmario_Main$Left$();
+      var x$14 = x$1.x$1;
+      var x$15 = x$1.y$1;
+      var x$16 = x$1.vy$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$14, x$15, (-1.5), x$16, x$13)
     })
   })(this));
   this.walkRight$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4) {
     return (function(x$2$2) {
       var x$2 = $as_Lmario_Main$Mario(x$2$2);
-      var x$16 = $m_Lmario_Main$Right$();
-      var x$17 = x$2.x$1;
-      var x$18 = x$2.y$1;
-      var x$19 = x$2.vy$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$17, x$18, 1.5, x$19, x$16)
+      var x$18 = $m_Lmario_Main$Right$();
+      var x$19 = x$2.x$1;
+      var x$20 = x$2.y$1;
+      var x$21 = x$2.vy$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$19, x$20, 1.5, x$21, x$18)
     })
   })(this));
   this.jump$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$5) {
     return (function(x$3$2) {
       var x$3 = $as_Lmario_Main$Mario(x$3$2);
-      var x$21 = x$3.x$1;
-      var x$22 = x$3.y$1;
-      var x$23 = x$3.vx$1;
-      var x$24 = x$3.dir$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$21, x$22, x$23, 6.0, x$24)
+      var x$23 = x$3.x$1;
+      var x$24 = x$3.y$1;
+      var x$25 = x$3.vx$1;
+      var x$26 = x$3.dir$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$23, x$24, x$25, 6.0, x$26)
     })
   })(this));
   var this$6 = this.applyGravity$1;
@@ -13112,12 +13108,18 @@ $c_Lmario_Main$.prototype.init___ = (function() {
   return this
 });
 $c_Lmario_Main$.prototype.view__Lmario_Main$Mario__Lscalm_Html = (function(model) {
+  var x1 = this.getRelativePostion__Lmario_Main$Mario__D__D__T2(model, $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerWidth), $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerHeight));
+  if ((x1 === null)) {
+    throw new $c_s_MatchError().init___O(x1)
+  };
+  var posX = x1.$$und1$mcD$sp__D();
+  var posY = x1.$$und2$mcD$sp__D();
   var _1$mcZ$sp = (model.y$1 > 0);
   var _2$mcZ$sp = (model.vx$1 !== 0);
   var verb = ((_1$mcZ$sp === true) ? "jump" : ((_2$mcZ$sp === true) ? "walk" : "stand"));
   var thiz = model.dir$1.toString__T();
   var dir = $as_T(thiz.toLowerCase());
-  var transform = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["transform: matrix(1, 0, 0, 1, ", ", ", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([(this.partialPosX$1 + model.x$1), (this.partialPosY$1 - model.y$1)]));
+  var transform = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["transform: matrix(1, 0, 0, 1, ", ", ", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([posX, posY]));
   var css = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["padding: 0px; margin: 0px; display: block; width: 35px; height: 35px; position: absolute; opacity: 1; ", "; background-color: transparent;"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([transform]));
   var attrs$1 = $m_sci_Nil$();
   var jsx$1 = new $c_Lscalm_Attribute().init___T__T("style", css);
@@ -13142,18 +13144,24 @@ $c_Lmario_Main$.prototype.subscriptions__Lmario_Main$Mario__Lscalm_Sub = (functi
       return $m_Lmario_Main$PassageOfTime$()
     })
   })(this)));
-  var touchStartSub = $m_Lmario_Effects$().touchStartSub__Lscalm_Sub().map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2, model$1) {
+  var x1 = this.getRelativePostion__Lmario_Main$Mario__D__D__T2(model, $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerWidth), $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerHeight));
+  if ((x1 === null)) {
+    throw new $c_s_MatchError().init___O(x1)
+  };
+  var posX = x1.$$und1$mcD$sp__D();
+  var posY = x1.$$und2$mcD$sp__D();
+  var touchStartSub = $m_Lmario_Effects$().touchStartSub__Lscalm_Sub().map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2, model$1, posX$2, posY$2) {
     return (function(x0$1$2) {
       var x0$1 = $as_T2(x0$1$2);
       if ((x0$1 !== null)) {
         var x = x0$1.$$und1$mcD$sp__D();
         var y = x0$1.$$und2$mcD$sp__D();
-        return new $c_s_Tuple2$mcZZ$sp().init___Z__Z((x > (model$1.x$1 + $m_Lmario_Main$().partialPosX$1)), (y < ($m_Lmario_Main$().partialPosY$1 - model$1.y$1)))
+        return new $c_s_Tuple2$mcZZ$sp().init___Z__Z((x > (model$1.x$1 + posX$2)), (y < (posY$2 - model$1.y$1)))
       } else {
         throw new $c_s_MatchError().init___O(x0$1)
       }
     })
-  })(this, model))).map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3) {
+  })(this, model, posX, posY))).map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3) {
     return (function(x0$2$2) {
       var x0$2 = $as_T2(x0$2$2);
       if ((x0$2 !== null)) {
@@ -13179,18 +13187,18 @@ $c_Lmario_Main$.prototype.subscriptions__Lmario_Main$Mario__Lscalm_Sub = (functi
       return $m_Lmario_Main$Void$()
     })
   })(this)));
-  var touchEndSub = $m_Lmario_Effects$().touchEndSub__Lscalm_Sub().map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4, model$2) {
+  var touchEndSub = $m_Lmario_Effects$().touchEndSub__Lscalm_Sub().map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4, model$2, posX$2$1, posY$2$1) {
     return (function(x0$3$2) {
       var x0$3 = $as_T2(x0$3$2);
       if ((x0$3 !== null)) {
         var x$1 = x0$3.$$und1$mcD$sp__D();
         var y$1 = x0$3.$$und2$mcD$sp__D();
-        return new $c_s_Tuple2$mcZZ$sp().init___Z__Z((x$1 > (model$2.x$1 + $m_Lmario_Main$().partialPosX$1)), (y$1 < ($m_Lmario_Main$().partialPosY$1 - model$2.y$1)))
+        return new $c_s_Tuple2$mcZZ$sp().init___Z__Z((x$1 > (model$2.x$1 + posX$2$1)), (y$1 < (posY$2$1 - model$2.y$1)))
       } else {
         throw new $c_s_MatchError().init___O(x0$3)
       }
     })
-  })(this, model))).map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$5) {
+  })(this, model, posX, posY))).map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$5) {
     return (function(x0$4$2) {
       var x0$4 = $as_T2(x0$4$2);
       if ((x0$4 !== null)) {
@@ -13217,6 +13225,11 @@ $c_Lmario_Main$.prototype.subscriptions__Lmario_Main$Mario__Lscalm_Sub = (functi
   var this$9 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$8, keyRightReleaseSub);
   var this$10 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$9, touchStartSub);
   return $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$10, touchEndSub)
+});
+$c_Lmario_Main$.prototype.getRelativePostion__Lmario_Main$Mario__D__D__T2 = (function(model, screenX, screenY) {
+  var posX = ((((-85.0) + screenX) / 2) + model.x$1);
+  var posY = (((-85.0) + screenY) - model.y$1);
+  return new $c_s_Tuple2$mcDD$sp().init___D__D(posX, posY)
 });
 $c_Lmario_Main$.prototype.main__AT__V = (function(args) {
   var _node = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector("#mario");
@@ -13247,11 +13260,11 @@ $c_Lmario_Main$.prototype.update__Lmario_Main$Msg__Lmario_Main$Mario__T2 = (func
           var jsx$1 = false
         };
         if (jsx$1) {
-          var x$26 = model.x$1;
-          var x$27 = model.y$1;
-          var x$28 = model.vy$1;
-          var x$29 = model.dir$1;
-          var newModel$4 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$26, x$27, 0.0, x$28, x$29);
+          var x$28 = model.x$1;
+          var x$29 = model.y$1;
+          var x$30 = model.vy$1;
+          var x$31 = model.dir$1;
+          var newModel$4 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$28, x$29, 0.0, x$30, x$31);
           return new $c_T2().init___O__O(newModel$4, $m_Lscalm_Cmd$Empty$())
         } else {
           var x$11 = $m_Lmario_Main$ArrowRightReleased$();
@@ -13263,11 +13276,11 @@ $c_Lmario_Main$.prototype.update__Lmario_Main$Msg__Lmario_Main$Mario__T2 = (func
             var jsx$2 = false
           };
           if (jsx$2) {
-            var x$31 = model.x$1;
-            var x$32 = model.y$1;
-            var x$33 = model.vy$1;
-            var x$34 = model.dir$1;
-            var newModel$5 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$31, x$32, 0.0, x$33, x$34);
+            var x$33 = model.x$1;
+            var x$34 = model.y$1;
+            var x$35 = model.vy$1;
+            var x$36 = model.dir$1;
+            var newModel$5 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$33, x$34, 0.0, x$35, x$36);
             return new $c_T2().init___O__O(newModel$5, $m_Lscalm_Cmd$Empty$())
           } else {
             var x$15 = $m_Lmario_Main$PassageOfTime$();
