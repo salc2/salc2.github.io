@@ -2533,45 +2533,8 @@ $c_Lmario_Effects$.prototype.keyPressSub__I__O__Lscalm_Sub = (function(keyCode, 
 $c_Lmario_Effects$.prototype.mario$Effects$$$anonfun$keyPressSub$2__Lorg_scalajs_dom_raw_KeyboardEvent__I__O__Lscalm_Task$Observer__O = (function(keyEvent, keyCode$1, msg$1, observer$2) {
   return (($uI(keyEvent.keyCode) === keyCode$1) ? (observer$2.onNext__O__V(msg$1), (void 0)) : (void 0))
 });
-$c_Lmario_Effects$.prototype.mario$Effects$$$anonfun$touchStartSub$2__Lorg_scalajs_dom_raw_TouchEvent__Lscalm_Task$Observer__V = (function(touchEvent, observer$4) {
-  observer$4.onNext__O__V(new $c_s_Tuple2$mcDD$sp().init___D__D($uD(touchEvent.touches.item(0).clientX), $uD(touchEvent.touches.item(0).clientY)))
-});
-$c_Lmario_Effects$.prototype.touchEndSub__Lscalm_Sub = (function() {
-  return $m_Lscalm_Sub$().ofTotalObservable__T__Lscalm_Task$Observable__Lscalm_Sub(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["touchEnd"])).s__sc_Seq__T($m_sci_Nil$()), new $c_Lmario_Effects$$$Lambda$4().init___O((function($this) {
-    return (function(observer$2) {
-      var observer = $as_Lscalm_Task$Observer(observer$2);
-      $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().addEventListener("touchend", (function(observer$5) {
-        return (function(arg1$2) {
-          $m_Lmario_Effects$().mario$Effects$$$anonfun$touchEndSub$2__Lorg_scalajs_dom_raw_TouchEvent__Lscalm_Task$Observer__V(arg1$2, observer$5)
-        })
-      })(observer));
-      return new $c_Lmario_Effects$$$Lambda$9().init___O((function($this$1) {
-        return (function() {
-          return (void 0)
-        })
-      })($this))
-    })
-  })(this)))
-});
 $c_Lmario_Effects$.prototype.mario$Effects$$$anonfun$keyReleaseSub$2__Lorg_scalajs_dom_raw_KeyboardEvent__I__O__Lscalm_Task$Observer__O = (function(keyEvent, keyCode$2, msg$2, observer$3) {
   return (($uI(keyEvent.keyCode) === keyCode$2) ? (observer$3.onNext__O__V(msg$2), (void 0)) : (void 0))
-});
-$c_Lmario_Effects$.prototype.touchStartSub__Lscalm_Sub = (function() {
-  return $m_Lscalm_Sub$().ofTotalObservable__T__Lscalm_Task$Observable__Lscalm_Sub(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["touchStart"])).s__sc_Seq__T($m_sci_Nil$()), new $c_Lmario_Effects$$$Lambda$3().init___O((function($this) {
-    return (function(observer$2) {
-      var observer = $as_Lscalm_Task$Observer(observer$2);
-      $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().addEventListener("touchstart", (function(observer$4) {
-        return (function(arg1$2) {
-          $m_Lmario_Effects$().mario$Effects$$$anonfun$touchStartSub$2__Lorg_scalajs_dom_raw_TouchEvent__Lscalm_Task$Observer__V(arg1$2, observer$4)
-        })
-      })(observer));
-      return new $c_Lmario_Effects$$$Lambda$8().init___O((function($this$1) {
-        return (function() {
-          return (void 0)
-        })
-      })($this))
-    })
-  })(this)))
 });
 $c_Lmario_Effects$.prototype.keyReleaseSub__I__O__Lscalm_Sub = (function(keyCode, msg) {
   return $m_Lscalm_Sub$().ofTotalObservable__T__Lscalm_Task$Observable__Lscalm_Sub(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["keyUp", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([keyCode])), new $c_Lmario_Effects$$$Lambda$2().init___O((function($this, keyCode$1, msg$1) {
@@ -2589,9 +2552,6 @@ $c_Lmario_Effects$.prototype.keyReleaseSub__I__O__Lscalm_Sub = (function(keyCode
       })($this))
     })
   })(this, keyCode, msg)))
-});
-$c_Lmario_Effects$.prototype.mario$Effects$$$anonfun$touchEndSub$2__Lorg_scalajs_dom_raw_TouchEvent__Lscalm_Task$Observer__V = (function(touchEvent, observer$5) {
-  observer$5.onNext__O__V(new $c_s_Tuple2$mcDD$sp().init___D__D($uD(touchEvent.changedTouches.item(0).clientX), $uD(touchEvent.changedTouches.item(0).clientY)))
 });
 $c_Lmario_Effects$.prototype.loop$1__p1__D__sr_IntRef__Lscalm_Task$Observer__V = (function(time, handle$1, observer$1) {
   observer$1.onNext__O__V(time);
@@ -9475,60 +9435,6 @@ var $d_Lmario_Effects$$$Lambda$2 = new $TypeData().initClass({
 });
 $c_Lmario_Effects$$$Lambda$2.prototype.$classData = $d_Lmario_Effects$$$Lambda$2;
 /** @constructor */
-function $c_Lmario_Effects$$$Lambda$3() {
-  $c_O.call(this);
-  this.f$1 = null
-}
-$c_Lmario_Effects$$$Lambda$3.prototype = new $h_O();
-$c_Lmario_Effects$$$Lambda$3.prototype.constructor = $c_Lmario_Effects$$$Lambda$3;
-/** @constructor */
-function $h_Lmario_Effects$$$Lambda$3() {
-  /*<skip>*/
-}
-$h_Lmario_Effects$$$Lambda$3.prototype = $c_Lmario_Effects$$$Lambda$3.prototype;
-$c_Lmario_Effects$$$Lambda$3.prototype.run__Lscalm_Task$Observer__Lscalm_Task$Cancelable = (function(observer$3) {
-  return $as_Lscalm_Task$Cancelable((0, this.f$1)(observer$3))
-});
-$c_Lmario_Effects$$$Lambda$3.prototype.init___O = (function(f) {
-  this.f$1 = f;
-  return this
-});
-var $d_Lmario_Effects$$$Lambda$3 = new $TypeData().initClass({
-  Lmario_Effects$$$Lambda$3: 0
-}, false, "mario.Effects$$$Lambda$3", {
-  Lmario_Effects$$$Lambda$3: 1,
-  O: 1,
-  Lscalm_Task$Observable: 1
-});
-$c_Lmario_Effects$$$Lambda$3.prototype.$classData = $d_Lmario_Effects$$$Lambda$3;
-/** @constructor */
-function $c_Lmario_Effects$$$Lambda$4() {
-  $c_O.call(this);
-  this.f$1 = null
-}
-$c_Lmario_Effects$$$Lambda$4.prototype = new $h_O();
-$c_Lmario_Effects$$$Lambda$4.prototype.constructor = $c_Lmario_Effects$$$Lambda$4;
-/** @constructor */
-function $h_Lmario_Effects$$$Lambda$4() {
-  /*<skip>*/
-}
-$h_Lmario_Effects$$$Lambda$4.prototype = $c_Lmario_Effects$$$Lambda$4.prototype;
-$c_Lmario_Effects$$$Lambda$4.prototype.run__Lscalm_Task$Observer__Lscalm_Task$Cancelable = (function(observer$3) {
-  return $as_Lscalm_Task$Cancelable((0, this.f$1)(observer$3))
-});
-$c_Lmario_Effects$$$Lambda$4.prototype.init___O = (function(f) {
-  this.f$1 = f;
-  return this
-});
-var $d_Lmario_Effects$$$Lambda$4 = new $TypeData().initClass({
-  Lmario_Effects$$$Lambda$4: 0
-}, false, "mario.Effects$$$Lambda$4", {
-  Lmario_Effects$$$Lambda$4: 1,
-  O: 1,
-  Lscalm_Task$Observable: 1
-});
-$c_Lmario_Effects$$$Lambda$4.prototype.$classData = $d_Lmario_Effects$$$Lambda$4;
-/** @constructor */
 function $c_Lmario_Effects$$$Lambda$5() {
   $c_O.call(this);
   this.f$1 = null
@@ -9609,60 +9515,6 @@ var $d_Lmario_Effects$$$Lambda$7 = new $TypeData().initClass({
   Lscalm_Task$Cancelable: 1
 });
 $c_Lmario_Effects$$$Lambda$7.prototype.$classData = $d_Lmario_Effects$$$Lambda$7;
-/** @constructor */
-function $c_Lmario_Effects$$$Lambda$8() {
-  $c_O.call(this);
-  this.f$1 = null
-}
-$c_Lmario_Effects$$$Lambda$8.prototype = new $h_O();
-$c_Lmario_Effects$$$Lambda$8.prototype.constructor = $c_Lmario_Effects$$$Lambda$8;
-/** @constructor */
-function $h_Lmario_Effects$$$Lambda$8() {
-  /*<skip>*/
-}
-$h_Lmario_Effects$$$Lambda$8.prototype = $c_Lmario_Effects$$$Lambda$8.prototype;
-$c_Lmario_Effects$$$Lambda$8.prototype.init___O = (function(f) {
-  this.f$1 = f;
-  return this
-});
-$c_Lmario_Effects$$$Lambda$8.prototype.cancel__V = (function() {
-  (0, this.f$1)()
-});
-var $d_Lmario_Effects$$$Lambda$8 = new $TypeData().initClass({
-  Lmario_Effects$$$Lambda$8: 0
-}, false, "mario.Effects$$$Lambda$8", {
-  Lmario_Effects$$$Lambda$8: 1,
-  O: 1,
-  Lscalm_Task$Cancelable: 1
-});
-$c_Lmario_Effects$$$Lambda$8.prototype.$classData = $d_Lmario_Effects$$$Lambda$8;
-/** @constructor */
-function $c_Lmario_Effects$$$Lambda$9() {
-  $c_O.call(this);
-  this.f$1 = null
-}
-$c_Lmario_Effects$$$Lambda$9.prototype = new $h_O();
-$c_Lmario_Effects$$$Lambda$9.prototype.constructor = $c_Lmario_Effects$$$Lambda$9;
-/** @constructor */
-function $h_Lmario_Effects$$$Lambda$9() {
-  /*<skip>*/
-}
-$h_Lmario_Effects$$$Lambda$9.prototype = $c_Lmario_Effects$$$Lambda$9.prototype;
-$c_Lmario_Effects$$$Lambda$9.prototype.init___O = (function(f) {
-  this.f$1 = f;
-  return this
-});
-$c_Lmario_Effects$$$Lambda$9.prototype.cancel__V = (function() {
-  (0, this.f$1)()
-});
-var $d_Lmario_Effects$$$Lambda$9 = new $TypeData().initClass({
-  Lmario_Effects$$$Lambda$9: 0
-}, false, "mario.Effects$$$Lambda$9", {
-  Lmario_Effects$$$Lambda$9: 1,
-  O: 1,
-  Lscalm_Task$Cancelable: 1
-});
-$c_Lmario_Effects$$$Lambda$9.prototype.$classData = $d_Lmario_Effects$$$Lambda$9;
 /** @constructor */
 function $c_Lmario_Effects$Cmd$$$Lambda$1() {
   $c_O.call(this);
@@ -13223,12 +13075,12 @@ $c_Lmario_Main$.prototype.init___ = (function() {
   this.applyGravity$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
     return (function(mario$2) {
       var mario = $as_Lmario_Main$Mario(mario$2);
-      var x$7 = ((mario.y$1 > 0) ? (mario.vy$1 - $m_Lmario_Main$().gravity$1) : 0.0);
-      var x$8 = mario.x$1;
-      var x$9 = mario.y$1;
-      var x$10 = mario.vx$1;
-      var x$11 = mario.dir$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$8, x$9, x$10, x$7, x$11)
+      var x$6 = ((mario.y$1 > 0) ? (mario.vy$1 - $m_Lmario_Main$().gravity$1) : 0.0);
+      var x$7 = mario.x$1;
+      var x$8 = mario.y$1;
+      var x$9 = mario.vx$1;
+      var x$10 = mario.dir$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$7, x$8, x$9, x$6, x$10)
     })
   })(this));
   this.applyMotion$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2) {
@@ -13246,31 +13098,31 @@ $c_Lmario_Main$.prototype.init___ = (function() {
   this.walkLeft$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1) {
     return (function(x$1$2) {
       var x$1 = $as_Lmario_Main$Mario(x$1$2);
-      var x$13 = $m_Lmario_Main$Left$();
-      var x$14 = x$1.x$1;
-      var x$15 = x$1.y$1;
-      var x$16 = x$1.vy$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$14, x$15, (-1.5), x$16, x$13)
+      var x$12 = $m_Lmario_Main$Left$();
+      var x$13 = x$1.x$1;
+      var x$14 = x$1.y$1;
+      var x$15 = x$1.vy$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$13, x$14, (-1.5), x$15, x$12)
     })
   })(this));
   this.walkRight$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4) {
     return (function(x$2$2) {
       var x$2 = $as_Lmario_Main$Mario(x$2$2);
-      var x$18 = $m_Lmario_Main$Right$();
-      var x$19 = x$2.x$1;
-      var x$20 = x$2.y$1;
-      var x$21 = x$2.vy$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$19, x$20, 1.5, x$21, x$18)
+      var x$17 = $m_Lmario_Main$Right$();
+      var x$18 = x$2.x$1;
+      var x$19 = x$2.y$1;
+      var x$20 = x$2.vy$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$18, x$19, 1.5, x$20, x$17)
     })
   })(this));
   this.jump$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$5) {
     return (function(x$3$2) {
       var x$3 = $as_Lmario_Main$Mario(x$3$2);
-      var x$23 = x$3.x$1;
-      var x$24 = x$3.y$1;
-      var x$25 = x$3.vx$1;
-      var x$26 = x$3.dir$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$23, x$24, x$25, 6.0, x$26)
+      var x$22 = x$3.x$1;
+      var x$23 = x$3.y$1;
+      var x$24 = x$3.vx$1;
+      var x$25 = x$3.dir$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$22, x$23, x$24, 6.0, x$25)
     })
   })(this));
   var this$6 = this.applyGravity$1;
@@ -13279,7 +13131,7 @@ $c_Lmario_Main$.prototype.init___ = (function() {
   return this
 });
 $c_Lmario_Main$.prototype.view__Lmario_Main$Mario__Lscalm_Html = (function(model) {
-  var x1 = this.getRelativePostion__Lmario_Main$Mario__D__D__T2(model, $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerWidth), $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerHeight));
+  var x1 = this.getRelativePosition__Lmario_Main$Mario__D__D__T2(model, $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerWidth), $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerHeight));
   if ((x1 === null)) {
     throw new $c_s_MatchError().init___O(x1)
   };
@@ -13300,6 +13152,11 @@ $c_Lmario_Main$.prototype.view__Lmario_Main$Mario__Lscalm_Html = (function(model
   var children$1 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_Lscalm_Tag().init___T__sc_Seq__sc_Seq("img", attrs, children)]);
   return new $c_Lscalm_Tag().init___T__sc_Seq__sc_Seq("div", attrs$1, children$1)
 });
+$c_Lmario_Main$.prototype.getRelativePosition__Lmario_Main$Mario__D__D__T2 = (function(model, screenX, screenY) {
+  var posX = ((((-85.0) + screenX) / 2) + model.x$1);
+  var posY = (((-85.0) + screenY) - model.y$1);
+  return new $c_s_Tuple2$mcDD$sp().init___D__D(posX, posY)
+});
 $c_Lmario_Main$.prototype.init__T2 = (function() {
   return new $c_T2().init___O__O(new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(0.0, 0.0, 0.0, 0.0, $m_Lmario_Main$Right$()), $m_Lscalm_Cmd$Empty$())
 });
@@ -13315,92 +13172,11 @@ $c_Lmario_Main$.prototype.subscriptions__Lmario_Main$Mario__Lscalm_Sub = (functi
       return $m_Lmario_Main$PassageOfTime$()
     })
   })(this)));
-  var x1 = this.getRelativePostion__Lmario_Main$Mario__D__D__T2(model, $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerWidth), $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerHeight));
-  if ((x1 === null)) {
-    throw new $c_s_MatchError().init___O(x1)
-  };
-  var posX = x1.$$und1$mcD$sp__D();
-  var posY = x1.$$und2$mcD$sp__D();
-  var touchStartSub = $m_Lmario_Effects$().touchStartSub__Lscalm_Sub().map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2, model$1, posX$2, posY$2) {
-    return (function(x0$1$2) {
-      var x0$1 = $as_T2(x0$1$2);
-      if ((x0$1 !== null)) {
-        var x = x0$1.$$und1$mcD$sp__D();
-        var y = x0$1.$$und2$mcD$sp__D();
-        return new $c_s_Tuple2$mcZZ$sp().init___Z__Z((x > (model$1.x$1 + posX$2)), (y < (posY$2 - model$1.y$1)))
-      } else {
-        throw new $c_s_MatchError().init___O(x0$1)
-      }
-    })
-  })(this, model, posX, posY))).map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3) {
-    return (function(x0$2$2) {
-      var x0$2 = $as_T2(x0$2$2);
-      if ((x0$2 !== null)) {
-        var p2 = x0$2.$$und1$mcZ$sp__Z();
-        var p3 = x0$2.$$und2$mcZ$sp__Z();
-        if (((p2 === true) && (p3 === false))) {
-          return $m_Lmario_Main$ArrowRightPressed$()
-        }
-      };
-      if ((x0$2 !== null)) {
-        var p4 = x0$2.$$und1$mcZ$sp__Z();
-        var p5 = x0$2.$$und2$mcZ$sp__Z();
-        if (((p4 === false) && (p5 === false))) {
-          return $m_Lmario_Main$ArrowLeftPressed$()
-        }
-      };
-      if ((x0$2 !== null)) {
-        var p7 = x0$2.$$und2$mcZ$sp__Z();
-        if ((p7 === true)) {
-          return $m_Lmario_Main$ArrowUpPressed$()
-        }
-      };
-      return $m_Lmario_Main$Void$()
-    })
-  })(this)));
-  var touchEndSub = $m_Lmario_Effects$().touchEndSub__Lscalm_Sub().map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4, model$2, posX$2$1, posY$2$1) {
-    return (function(x0$3$2) {
-      var x0$3 = $as_T2(x0$3$2);
-      if ((x0$3 !== null)) {
-        var x$1 = x0$3.$$und1$mcD$sp__D();
-        var y$1 = x0$3.$$und2$mcD$sp__D();
-        return new $c_s_Tuple2$mcZZ$sp().init___Z__Z((x$1 > (model$2.x$1 + posX$2$1)), (y$1 < (posY$2$1 - model$2.y$1)))
-      } else {
-        throw new $c_s_MatchError().init___O(x0$3)
-      }
-    })
-  })(this, model, posX, posY))).map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$5) {
-    return (function(x0$4$2) {
-      var x0$4 = $as_T2(x0$4$2);
-      if ((x0$4 !== null)) {
-        var p2$1 = x0$4.$$und1$mcZ$sp__Z();
-        var p3$1 = x0$4.$$und2$mcZ$sp__Z();
-        if (((p2$1 === true) && (p3$1 === false))) {
-          return $m_Lmario_Main$ArrowRightReleased$()
-        }
-      };
-      if ((x0$4 !== null)) {
-        var p4$1 = x0$4.$$und1$mcZ$sp__Z();
-        var p5$1 = x0$4.$$und2$mcZ$sp__Z();
-        if (((p4$1 === false) && (p5$1 === false))) {
-          return $m_Lmario_Main$ArrowLeftReleased$()
-        }
-      };
-      return $m_Lmario_Main$Void$()
-    })
-  })(this)));
   var this$1 = new $c_Lscalm_Sub$Combine().init___Lscalm_Sub__Lscalm_Sub(fpsSub, keyUpSub);
-  var this$6 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$1, keyLeftPressSub);
-  var this$7 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$6, keyRightPressSub);
-  var this$8 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$7, keyLeftReleaseSub);
-  var this$9 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$8, keyRightReleaseSub);
-  var this$10 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$9, touchStartSub);
-  return $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$10, touchEndSub)
-});
-$c_Lmario_Main$.prototype.getRelativePostion__Lmario_Main$Mario__D__D__T2 = (function(model, screenX, screenY) {
-  var posX = ((((-85.0) + screenX) / 2) + model.x$1);
-  var posY = (((-85.0) + screenY) - model.y$1);
-  return new $c_s_Tuple2$mcDD$sp().init___D__D(posX, posY)
+  var this$2 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$1, keyLeftPressSub);
+  var this$3 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$2, keyRightPressSub);
+  var this$4 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$3, keyLeftReleaseSub);
+  return $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$4, keyRightReleaseSub)
 });
 $c_Lmario_Main$.prototype.main__AT__V = (function(args) {
   var _node = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector("#mario");
@@ -13431,11 +13207,11 @@ $c_Lmario_Main$.prototype.update__Lmario_Main$Msg__Lmario_Main$Mario__T2 = (func
           var jsx$1 = false
         };
         if (jsx$1) {
-          var x$28 = model.x$1;
-          var x$29 = model.y$1;
-          var x$30 = model.vy$1;
-          var x$31 = model.dir$1;
-          var newModel$4 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$28, x$29, 0.0, x$30, x$31);
+          var x$27 = model.x$1;
+          var x$28 = model.y$1;
+          var x$29 = model.vy$1;
+          var x$30 = model.dir$1;
+          var newModel$4 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$27, x$28, 0.0, x$29, x$30);
           return new $c_T2().init___O__O(newModel$4, $m_Lscalm_Cmd$Empty$())
         } else {
           var x$11 = $m_Lmario_Main$ArrowRightReleased$();
@@ -13447,11 +13223,11 @@ $c_Lmario_Main$.prototype.update__Lmario_Main$Msg__Lmario_Main$Mario__T2 = (func
             var jsx$2 = false
           };
           if (jsx$2) {
-            var x$33 = model.x$1;
-            var x$34 = model.y$1;
-            var x$35 = model.vy$1;
-            var x$36 = model.dir$1;
-            var newModel$5 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$33, x$34, 0.0, x$35, x$36);
+            var x$32 = model.x$1;
+            var x$33 = model.y$1;
+            var x$34 = model.vy$1;
+            var x$35 = model.dir$1;
+            var newModel$5 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$32, x$33, 0.0, x$34, x$35);
             return new $c_T2().init___O__O(newModel$5, $m_Lscalm_Cmd$Empty$())
           } else {
             var x$15 = $m_Lmario_Main$PassageOfTime$();
@@ -25023,9 +24799,6 @@ $c_T2.prototype.$$und1$mcZ$sp__Z = (function() {
 $c_T2.prototype.$$und2$mcD$sp__D = (function() {
   return $uD(this.$$und2__O())
 });
-$c_T2.prototype.$$und2$mcZ$sp__Z = (function() {
-  return $uZ(this.$$und2__O())
-});
 $c_T2.prototype.hashCode__I = (function() {
   var this$2 = $m_s_util_hashing_MurmurHash3$();
   return this$2.productHash__s_Product__I__I(this, (-889275714))
@@ -26932,50 +26705,6 @@ var $d_ju_MissingFormatWidthException = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_ju_MissingFormatWidthException.prototype.$classData = $d_ju_MissingFormatWidthException;
-/** @constructor */
-function $c_s_Tuple2$mcZZ$sp() {
-  $c_T2.call(this);
-  this.$$und1$mcZ$sp$f = false;
-  this.$$und2$mcZ$sp$f = false
-}
-$c_s_Tuple2$mcZZ$sp.prototype = new $h_T2();
-$c_s_Tuple2$mcZZ$sp.prototype.constructor = $c_s_Tuple2$mcZZ$sp;
-/** @constructor */
-function $h_s_Tuple2$mcZZ$sp() {
-  /*<skip>*/
-}
-$h_s_Tuple2$mcZZ$sp.prototype = $c_s_Tuple2$mcZZ$sp.prototype;
-$c_s_Tuple2$mcZZ$sp.prototype.$$und2__O = (function() {
-  return this.$$und2$mcZ$sp$f
-});
-$c_s_Tuple2$mcZZ$sp.prototype.$$und1$mcZ$sp__Z = (function() {
-  return this.$$und1$mcZ$sp$f
-});
-$c_s_Tuple2$mcZZ$sp.prototype.$$und2$mcZ$sp__Z = (function() {
-  return this.$$und2$mcZ$sp$f
-});
-$c_s_Tuple2$mcZZ$sp.prototype.$$und1__O = (function() {
-  return this.$$und1$mcZ$sp$f
-});
-$c_s_Tuple2$mcZZ$sp.prototype.init___Z__Z = (function(_1$mcZ$sp, _2$mcZ$sp) {
-  this.$$und1$mcZ$sp$f = _1$mcZ$sp;
-  this.$$und2$mcZ$sp$f = _2$mcZ$sp;
-  $c_T2.prototype.init___O__O.call(this, null, null);
-  return this
-});
-var $d_s_Tuple2$mcZZ$sp = new $TypeData().initClass({
-  s_Tuple2$mcZZ$sp: 0
-}, false, "scala.Tuple2$mcZZ$sp", {
-  s_Tuple2$mcZZ$sp: 1,
-  T2: 1,
-  O: 1,
-  s_Product2: 1,
-  s_Product: 1,
-  s_Equals: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_s_Tuple2$mcZZ$sp.prototype.$classData = $d_s_Tuple2$mcZZ$sp;
 /** @constructor */
 function $c_s_math_Ordering$$anon$5() {
   $c_O.call(this);
