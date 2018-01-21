@@ -1686,6 +1686,18 @@ function $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub($thiz, sub2) {
     }
   }
 }
+function $is_Lscalm_Sub(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lscalm_Sub)))
+}
+function $as_Lscalm_Sub(obj) {
+  return (($is_Lscalm_Sub(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scalm.Sub"))
+}
+function $isArrayOf_Lscalm_Sub(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lscalm_Sub)))
+}
+function $asArrayOf_Lscalm_Sub(obj, depth) {
+  return (($isArrayOf_Lscalm_Sub(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscalm.Sub;", depth))
+}
 function $is_Lscalm_Task(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lscalm_Task)))
 }
@@ -2482,7 +2494,9 @@ function $f_scm_HashTable$HashUtils__improve__I__I__I($thiz, hcode, seed) {
 /** @constructor */
 function $c_Lmario_Effects$() {
   $c_O.call(this);
-  this.requestAnimationFrameSub$1 = null
+  this.requestAnimationFrameSub$1 = null;
+  this.touchStartSub$1 = null;
+  this.touchEndSub$1 = null
 }
 $c_Lmario_Effects$.prototype = new $h_O();
 $c_Lmario_Effects$.prototype.constructor = $c_Lmario_Effects$;
@@ -2493,7 +2507,7 @@ function $h_Lmario_Effects$() {
 $h_Lmario_Effects$.prototype = $c_Lmario_Effects$.prototype;
 $c_Lmario_Effects$.prototype.init___ = (function() {
   $n_Lmario_Effects$ = this;
-  this.requestAnimationFrameSub$1 = $m_Lscalm_Sub$().ofTotalObservable__T__Lscalm_Task$Observable__Lscalm_Sub("requestAnimation", new $c_Lmario_Effects$$$Lambda$10().init___O((function($this) {
+  this.requestAnimationFrameSub$1 = $m_Lscalm_Sub$().ofTotalObservable__T__Lscalm_Task$Observable__Lscalm_Sub("requestAnimation", new $c_Lmario_Effects$$$Lambda$8().init___O((function($this) {
     return (function(observer$2) {
       var observer = $as_Lscalm_Task$Observer(observer$2);
       var handle = new $c_sr_IntRef().init___I(0);
@@ -2504,11 +2518,59 @@ $c_Lmario_Effects$.prototype.init___ = (function() {
           this$2.loop$1__p1__D__sr_IntRef__Lscalm_Task$Observer__V(arg1, handle$1, observer$1)
         })
       })(handle, observer)));
-      return new $c_Lmario_Effects$$$Lambda$5().init___O((function($this$1, handle$2) {
+      return new $c_Lmario_Effects$$$Lambda$3().init___O((function($this$1, handle$2) {
         return (function() {
           $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().cancelAnimationFrame(handle$2.elem$1)
         })
       })($this, handle))
+    })
+  })(this)));
+  this.touchStartSub$1 = $m_Lscalm_Sub$().ofTotalObservable__T__Lscalm_Task$Observable__Lscalm_Sub(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["touchStart"])).s__sc_Seq__T($m_sci_Nil$()), new $c_Lmario_Effects$$$Lambda$9().init___O((function(this$2$1) {
+    return (function(observer$4$2) {
+      var observer$4 = $as_Lscalm_Task$Observer(observer$4$2);
+      var listener = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$2, observer$3) {
+        return (function(touchEvent$2) {
+          observer$3.onNext__O__V(new $c_s_Tuple2$mcDD$sp().init___D__D($uD(touchEvent$2.touches.item(0).clientX), $uD(touchEvent$2.touches.item(0).clientY)))
+        })
+      })(this$2$1, observer$4));
+      $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().addEventListener("touchstart", (function(f) {
+        return (function(arg1$1) {
+          return f.apply__O__O(arg1$1)
+        })
+      })(listener));
+      return new $c_Lmario_Effects$$$Lambda$6().init___O((function(this$2$2, listener$1) {
+        return (function() {
+          $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().removeEventListener("touchstart", (function(f$1) {
+            return (function(arg1$3) {
+              return f$1.apply__O__O(arg1$3)
+            })
+          })(listener$1))
+        })
+      })(this$2$1, listener))
+    })
+  })(this)));
+  this.touchEndSub$1 = $m_Lscalm_Sub$().ofTotalObservable__T__Lscalm_Task$Observable__Lscalm_Sub(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["touchEnd"])).s__sc_Seq__T($m_sci_Nil$()), new $c_Lmario_Effects$$$Lambda$10().init___O((function(this$3) {
+    return (function(observer$5$2) {
+      var observer$5 = $as_Lscalm_Task$Observer(observer$5$2);
+      var listener$2 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$3, observer$6) {
+        return (function(touchEvent$2$1) {
+          observer$6.onNext__O__V(new $c_s_Tuple2$mcDD$sp().init___D__D($uD(touchEvent$2$1.changedTouches.item(0).clientX), $uD(touchEvent$2$1.changedTouches.item(0).clientY)))
+        })
+      })(this$3, observer$5));
+      $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().addEventListener("touchend", (function(f$2) {
+        return (function(arg1$4) {
+          return f$2.apply__O__O(arg1$4)
+        })
+      })(listener$2));
+      return new $c_Lmario_Effects$$$Lambda$7().init___O((function(this$2$3, listener$3) {
+        return (function() {
+          $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().removeEventListener("touchend", (function(f$3) {
+            return (function(arg1$5) {
+              return f$3.apply__O__O(arg1$5)
+            })
+          })(listener$3))
+        })
+      })(this$3, listener$2))
     })
   })(this)));
   return this
@@ -2517,39 +2579,55 @@ $c_Lmario_Effects$.prototype.keyPressSub__I__O__Lscalm_Sub = (function(keyCode, 
   return $m_Lscalm_Sub$().ofTotalObservable__T__Lscalm_Task$Observable__Lscalm_Sub(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["keyDown", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([keyCode])), new $c_Lmario_Effects$$$Lambda$1().init___O((function($this, keyCode$1, msg$1) {
     return (function(observer$2) {
       var observer = $as_Lscalm_Task$Observer(observer$2);
-      $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().addEventListener("keydown", (function(keyCode$1$1, msg$1$1, observer$2$1) {
-        return (function(arg1$2) {
-          return $m_Lmario_Effects$().mario$Effects$$$anonfun$keyPressSub$2__Lorg_scalajs_dom_raw_KeyboardEvent__I__O__Lscalm_Task$Observer__O(arg1$2, keyCode$1$1, msg$1$1, observer$2$1)
+      var listener = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$1, keyCode$1$1, msg$1$1, observer$1) {
+        return (function(keyEvent$2) {
+          if (($uI(keyEvent$2.keyCode) === keyCode$1$1)) {
+            observer$1.onNext__O__V(msg$1$1)
+          }
         })
-      })(keyCode$1, msg$1, observer));
-      return new $c_Lmario_Effects$$$Lambda$6().init___O((function($this$1) {
+      })($this, keyCode$1, msg$1, observer));
+      $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().addEventListener("keydown", (function(f) {
+        return (function(arg1) {
+          return f.apply__O__O(arg1)
+        })
+      })(listener));
+      return new $c_Lmario_Effects$$$Lambda$4().init___O((function(this$2, listener$1) {
         return (function() {
-          return (void 0)
+          $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().removeEventListener("keydown", (function(f$1) {
+            return (function(arg1$1) {
+              return f$1.apply__O__O(arg1$1)
+            })
+          })(listener$1))
         })
-      })($this))
+      })($this, listener))
     })
   })(this, keyCode, msg)))
-});
-$c_Lmario_Effects$.prototype.mario$Effects$$$anonfun$keyPressSub$2__Lorg_scalajs_dom_raw_KeyboardEvent__I__O__Lscalm_Task$Observer__O = (function(keyEvent, keyCode$1, msg$1, observer$2) {
-  return (($uI(keyEvent.keyCode) === keyCode$1) ? (observer$2.onNext__O__V(msg$1), (void 0)) : (void 0))
-});
-$c_Lmario_Effects$.prototype.mario$Effects$$$anonfun$keyReleaseSub$2__Lorg_scalajs_dom_raw_KeyboardEvent__I__O__Lscalm_Task$Observer__O = (function(keyEvent, keyCode$2, msg$2, observer$3) {
-  return (($uI(keyEvent.keyCode) === keyCode$2) ? (observer$3.onNext__O__V(msg$2), (void 0)) : (void 0))
 });
 $c_Lmario_Effects$.prototype.keyReleaseSub__I__O__Lscalm_Sub = (function(keyCode, msg) {
   return $m_Lscalm_Sub$().ofTotalObservable__T__Lscalm_Task$Observable__Lscalm_Sub(new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["keyUp", ""])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([keyCode])), new $c_Lmario_Effects$$$Lambda$2().init___O((function($this, keyCode$1, msg$1) {
     return (function(observer$2) {
       var observer = $as_Lscalm_Task$Observer(observer$2);
-      $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().addEventListener("keyup", (function(keyCode$2, msg$2, observer$3) {
-        return (function(arg1$2) {
-          return $m_Lmario_Effects$().mario$Effects$$$anonfun$keyReleaseSub$2__Lorg_scalajs_dom_raw_KeyboardEvent__I__O__Lscalm_Task$Observer__O(arg1$2, keyCode$2, msg$2, observer$3)
+      var listener = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$1, keyCode$2, msg$2, observer$1) {
+        return (function(keyEvent$2) {
+          if (($uI(keyEvent$2.keyCode) === keyCode$2)) {
+            observer$1.onNext__O__V(msg$2)
+          }
         })
-      })(keyCode$1, msg$1, observer));
-      return new $c_Lmario_Effects$$$Lambda$7().init___O((function($this$1) {
+      })($this, keyCode$1, msg$1, observer));
+      $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().addEventListener("keyup", (function(f) {
+        return (function(arg1) {
+          return f.apply__O__O(arg1)
+        })
+      })(listener));
+      return new $c_Lmario_Effects$$$Lambda$5().init___O((function(this$2, listener$1) {
         return (function() {
-          return (void 0)
+          $m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().removeEventListener("keyup", (function(f$1) {
+            return (function(arg1$1) {
+              return f$1.apply__O__O(arg1$1)
+            })
+          })(listener$1))
         })
-      })($this))
+      })($this, listener))
     })
   })(this, keyCode, msg)))
 });
@@ -2591,8 +2669,8 @@ $h_Lmario_Effects$Cmd$.prototype = $c_Lmario_Effects$Cmd$.prototype;
 $c_Lmario_Effects$Cmd$.prototype.init___ = (function() {
   return this
 });
-$c_Lmario_Effects$Cmd$.prototype.playSound__T__O__Lscalm_Cmd = (function(url, msgBack) {
-  var this$1 = new $c_Lscalm_Task$RunObservable().init___Lscalm_Task$Observable(new $c_Lmario_Effects$Cmd$$$Lambda$1().init___O((function($this, url$1) {
+$c_Lmario_Effects$Cmd$.prototype.playSound__T__Lscalm_Cmd = (function(url) {
+  var this$2 = new $c_Lscalm_Task$RunObservable().init___Lscalm_Task$Observable(new $c_Lmario_Effects$Cmd$$$Lambda$1().init___O((function($this, url$1) {
     return (function(x$1$2) {
       $as_Lscalm_Task$Observer(x$1$2);
       var audio = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().createElement("audio");
@@ -2609,13 +2687,12 @@ $c_Lmario_Effects$Cmd$.prototype.playSound__T__O__Lscalm_Cmd = (function(url, ms
       })($this))
     })
   })(this, url)));
-  var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2, msgBack$1) {
-    return (function(x$3$2) {
-      $as_s_util_Either(x$3$2);
-      return msgBack$1
+  return new $c_Lscalm_Cmd$RunTask().init___Lscalm_Task__F1(this$2, new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$2) {
+    return (function(x$2$2) {
+      var x$2 = $as_s_util_Either(x$2$2);
+      return new $c_s_util_Either$RightProjection().init___s_util_Either(x$2).get__O()
     })
-  })(this, msgBack));
-  return new $c_Lscalm_Cmd$RunTask().init___Lscalm_Task__F1(this$1, f)
+  })(this$2)))
 });
 $c_Lmario_Effects$Cmd$.prototype.mario$Effects$Cmd$$$anonfun$playSound$2__Lorg_scalajs_dom_raw_Event__Lorg_scalajs_dom_raw_HTMLAudioElement__V = (function(x$2, audio$1) {
   audio$1.play()
@@ -9354,6 +9431,32 @@ function $m_sr_Statics$() {
   return $n_sr_Statics$
 }
 /** @constructor */
+function $c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4() {
+  $c_O.call(this);
+  this.self$1 = null;
+  this.typeClassInstance$1 = null
+}
+$c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4.prototype = new $h_O();
+$c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4.prototype.constructor = $c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4;
+/** @constructor */
+function $h_Lcats_SemigroupK$ToSemigroupKOps$$anon$4() {
+  /*<skip>*/
+}
+$h_Lcats_SemigroupK$ToSemigroupKOps$$anon$4.prototype = $c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4.prototype;
+$c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4.prototype.init___Lcats_SemigroupK$ToSemigroupKOps__O__Lcats_SemigroupK = (function($$outer, target$1, tc$1) {
+  this.self$1 = target$1;
+  this.typeClassInstance$1 = tc$1;
+  return this
+});
+var $d_Lcats_SemigroupK$ToSemigroupKOps$$anon$4 = new $TypeData().initClass({
+  Lcats_SemigroupK$ToSemigroupKOps$$anon$4: 0
+}, false, "cats.SemigroupK$ToSemigroupKOps$$anon$4", {
+  Lcats_SemigroupK$ToSemigroupKOps$$anon$4: 1,
+  O: 1,
+  Lcats_SemigroupK$Ops: 1
+});
+$c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4.prototype.$classData = $d_Lcats_SemigroupK$ToSemigroupKOps$$anon$4;
+/** @constructor */
 function $c_Lmario_Effects$$$Lambda$1() {
   $c_O.call(this);
   this.f$1 = null
@@ -9435,6 +9538,60 @@ var $d_Lmario_Effects$$$Lambda$2 = new $TypeData().initClass({
 });
 $c_Lmario_Effects$$$Lambda$2.prototype.$classData = $d_Lmario_Effects$$$Lambda$2;
 /** @constructor */
+function $c_Lmario_Effects$$$Lambda$3() {
+  $c_O.call(this);
+  this.f$1 = null
+}
+$c_Lmario_Effects$$$Lambda$3.prototype = new $h_O();
+$c_Lmario_Effects$$$Lambda$3.prototype.constructor = $c_Lmario_Effects$$$Lambda$3;
+/** @constructor */
+function $h_Lmario_Effects$$$Lambda$3() {
+  /*<skip>*/
+}
+$h_Lmario_Effects$$$Lambda$3.prototype = $c_Lmario_Effects$$$Lambda$3.prototype;
+$c_Lmario_Effects$$$Lambda$3.prototype.init___O = (function(f) {
+  this.f$1 = f;
+  return this
+});
+$c_Lmario_Effects$$$Lambda$3.prototype.cancel__V = (function() {
+  (0, this.f$1)()
+});
+var $d_Lmario_Effects$$$Lambda$3 = new $TypeData().initClass({
+  Lmario_Effects$$$Lambda$3: 0
+}, false, "mario.Effects$$$Lambda$3", {
+  Lmario_Effects$$$Lambda$3: 1,
+  O: 1,
+  Lscalm_Task$Cancelable: 1
+});
+$c_Lmario_Effects$$$Lambda$3.prototype.$classData = $d_Lmario_Effects$$$Lambda$3;
+/** @constructor */
+function $c_Lmario_Effects$$$Lambda$4() {
+  $c_O.call(this);
+  this.f$1 = null
+}
+$c_Lmario_Effects$$$Lambda$4.prototype = new $h_O();
+$c_Lmario_Effects$$$Lambda$4.prototype.constructor = $c_Lmario_Effects$$$Lambda$4;
+/** @constructor */
+function $h_Lmario_Effects$$$Lambda$4() {
+  /*<skip>*/
+}
+$h_Lmario_Effects$$$Lambda$4.prototype = $c_Lmario_Effects$$$Lambda$4.prototype;
+$c_Lmario_Effects$$$Lambda$4.prototype.init___O = (function(f) {
+  this.f$1 = f;
+  return this
+});
+$c_Lmario_Effects$$$Lambda$4.prototype.cancel__V = (function() {
+  (0, this.f$1)()
+});
+var $d_Lmario_Effects$$$Lambda$4 = new $TypeData().initClass({
+  Lmario_Effects$$$Lambda$4: 0
+}, false, "mario.Effects$$$Lambda$4", {
+  Lmario_Effects$$$Lambda$4: 1,
+  O: 1,
+  Lscalm_Task$Cancelable: 1
+});
+$c_Lmario_Effects$$$Lambda$4.prototype.$classData = $d_Lmario_Effects$$$Lambda$4;
+/** @constructor */
 function $c_Lmario_Effects$$$Lambda$5() {
   $c_O.call(this);
   this.f$1 = null
@@ -9515,6 +9672,60 @@ var $d_Lmario_Effects$$$Lambda$7 = new $TypeData().initClass({
   Lscalm_Task$Cancelable: 1
 });
 $c_Lmario_Effects$$$Lambda$7.prototype.$classData = $d_Lmario_Effects$$$Lambda$7;
+/** @constructor */
+function $c_Lmario_Effects$$$Lambda$8() {
+  $c_O.call(this);
+  this.f$1 = null
+}
+$c_Lmario_Effects$$$Lambda$8.prototype = new $h_O();
+$c_Lmario_Effects$$$Lambda$8.prototype.constructor = $c_Lmario_Effects$$$Lambda$8;
+/** @constructor */
+function $h_Lmario_Effects$$$Lambda$8() {
+  /*<skip>*/
+}
+$h_Lmario_Effects$$$Lambda$8.prototype = $c_Lmario_Effects$$$Lambda$8.prototype;
+$c_Lmario_Effects$$$Lambda$8.prototype.run__Lscalm_Task$Observer__Lscalm_Task$Cancelable = (function(observer$3) {
+  return $as_Lscalm_Task$Cancelable((0, this.f$1)(observer$3))
+});
+$c_Lmario_Effects$$$Lambda$8.prototype.init___O = (function(f) {
+  this.f$1 = f;
+  return this
+});
+var $d_Lmario_Effects$$$Lambda$8 = new $TypeData().initClass({
+  Lmario_Effects$$$Lambda$8: 0
+}, false, "mario.Effects$$$Lambda$8", {
+  Lmario_Effects$$$Lambda$8: 1,
+  O: 1,
+  Lscalm_Task$Observable: 1
+});
+$c_Lmario_Effects$$$Lambda$8.prototype.$classData = $d_Lmario_Effects$$$Lambda$8;
+/** @constructor */
+function $c_Lmario_Effects$$$Lambda$9() {
+  $c_O.call(this);
+  this.f$1 = null
+}
+$c_Lmario_Effects$$$Lambda$9.prototype = new $h_O();
+$c_Lmario_Effects$$$Lambda$9.prototype.constructor = $c_Lmario_Effects$$$Lambda$9;
+/** @constructor */
+function $h_Lmario_Effects$$$Lambda$9() {
+  /*<skip>*/
+}
+$h_Lmario_Effects$$$Lambda$9.prototype = $c_Lmario_Effects$$$Lambda$9.prototype;
+$c_Lmario_Effects$$$Lambda$9.prototype.run__Lscalm_Task$Observer__Lscalm_Task$Cancelable = (function(observer$3) {
+  return $as_Lscalm_Task$Cancelable((0, this.f$1)(observer$3))
+});
+$c_Lmario_Effects$$$Lambda$9.prototype.init___O = (function(f) {
+  this.f$1 = f;
+  return this
+});
+var $d_Lmario_Effects$$$Lambda$9 = new $TypeData().initClass({
+  Lmario_Effects$$$Lambda$9: 0
+}, false, "mario.Effects$$$Lambda$9", {
+  Lmario_Effects$$$Lambda$9: 1,
+  O: 1,
+  Lscalm_Task$Observable: 1
+});
+$c_Lmario_Effects$$$Lambda$9.prototype.$classData = $d_Lmario_Effects$$$Lambda$9;
 /** @constructor */
 function $c_Lmario_Effects$Cmd$$$Lambda$1() {
   $c_O.call(this);
@@ -13075,12 +13286,12 @@ $c_Lmario_Main$.prototype.init___ = (function() {
   this.applyGravity$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
     return (function(mario$2) {
       var mario = $as_Lmario_Main$Mario(mario$2);
-      var x$6 = ((mario.y$1 > 0) ? (mario.vy$1 - $m_Lmario_Main$().gravity$1) : 0.0);
-      var x$7 = mario.x$1;
-      var x$8 = mario.y$1;
-      var x$9 = mario.vx$1;
-      var x$10 = mario.dir$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$7, x$8, x$9, x$6, x$10)
+      var x$8 = ((mario.y$1 > 0) ? (mario.vy$1 - $m_Lmario_Main$().gravity$1) : 0.0);
+      var x$9 = mario.x$1;
+      var x$10 = mario.y$1;
+      var x$11 = mario.vx$1;
+      var x$12 = mario.dir$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$9, x$10, x$11, x$8, x$12)
     })
   })(this));
   this.applyMotion$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2) {
@@ -13098,31 +13309,31 @@ $c_Lmario_Main$.prototype.init___ = (function() {
   this.walkLeft$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1) {
     return (function(x$1$2) {
       var x$1 = $as_Lmario_Main$Mario(x$1$2);
-      var x$12 = $m_Lmario_Main$Left$();
-      var x$13 = x$1.x$1;
-      var x$14 = x$1.y$1;
-      var x$15 = x$1.vy$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$13, x$14, (-1.5), x$15, x$12)
+      var x$14 = $m_Lmario_Main$Left$();
+      var x$15 = x$1.x$1;
+      var x$16 = x$1.y$1;
+      var x$17 = x$1.vy$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$15, x$16, (-1.5), x$17, x$14)
     })
   })(this));
   this.walkRight$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4) {
     return (function(x$2$2) {
       var x$2 = $as_Lmario_Main$Mario(x$2$2);
-      var x$17 = $m_Lmario_Main$Right$();
-      var x$18 = x$2.x$1;
-      var x$19 = x$2.y$1;
-      var x$20 = x$2.vy$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$18, x$19, 1.5, x$20, x$17)
+      var x$19 = $m_Lmario_Main$Right$();
+      var x$20 = x$2.x$1;
+      var x$21 = x$2.y$1;
+      var x$22 = x$2.vy$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$20, x$21, 1.5, x$22, x$19)
     })
   })(this));
   this.jump$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$5) {
     return (function(x$3$2) {
       var x$3 = $as_Lmario_Main$Mario(x$3$2);
-      var x$22 = x$3.x$1;
-      var x$23 = x$3.y$1;
-      var x$24 = x$3.vx$1;
-      var x$25 = x$3.dir$1;
-      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$22, x$23, x$24, 6.0, x$25)
+      var x$24 = x$3.x$1;
+      var x$25 = x$3.y$1;
+      var x$26 = x$3.vx$1;
+      var x$27 = x$3.dir$1;
+      return new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$24, x$25, x$26, 4.0, x$27)
     })
   })(this));
   var this$6 = this.applyGravity$1;
@@ -13131,7 +13342,7 @@ $c_Lmario_Main$.prototype.init___ = (function() {
   return this
 });
 $c_Lmario_Main$.prototype.view__Lmario_Main$Mario__Lscalm_Html = (function(model) {
-  var x1 = this.getRelativePosition__Lmario_Main$Mario__D__D__T2(model, $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerWidth), $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerHeight));
+  var x1 = this.relativePositionWithScreen__D__D__Lmario_Main$Mario__T2($uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerWidth), $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerHeight), model);
   if ((x1 === null)) {
     throw new $c_s_MatchError().init___O(x1)
   };
@@ -13142,51 +13353,153 @@ $c_Lmario_Main$.prototype.view__Lmario_Main$Mario__Lscalm_Html = (function(model
   var verb = ((_1$mcZ$sp === true) ? "jump" : ((_2$mcZ$sp === true) ? "walk" : "stand"));
   var thiz = model.dir$1.toString__T();
   var dir = $as_T(thiz.toLowerCase());
-  var transform = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["transform: matrix(1, 0, 0, 1, ", ", ", ")"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([posX, posY]));
-  var css = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["padding: 0px; margin: 0px; display: block; width: 35px; height: 35px; position: absolute; opacity: 1; ", "; background-color: transparent;"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([transform]));
-  var attrs$1 = $m_sci_Nil$();
-  var jsx$1 = new $c_Lscalm_Attribute().init___T__T("style", css);
-  var uri = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["resources/mario/", "/", ".gif"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([verb, dir]));
-  var attrs = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$1, new $c_Lscalm_Prop().init___T__T("src", uri)]);
+  var this$2 = $m_Lscalm_Style$().monoid$1;
+  var x = $m_Lscalm_Style$().apply__T__T__Lscalm_Style("top", new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", "px"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([posY])));
+  var y = $m_Lscalm_Style$().apply__T__T__Lscalm_Style("left", new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", "px"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([posX])));
+  var css = this$2.combine__Lscalm_Style__Lscalm_Style__Lscalm_Style(x, y);
+  var array = [css];
+  var ev = $m_Lscalm_Style$().monoid$1;
+  var z = $m_Lscalm_Style$().empty$1;
+  var start = 0;
+  var end = $uI(array.length);
+  var z$1 = z;
+  var start$1 = start;
+  var z$2 = z$1;
+  var jsx$3;
+  _foldl: while (true) {
+    if ((start$1 !== end)) {
+      var temp$start = ((1 + start$1) | 0);
+      var arg1 = z$2;
+      var index = start$1;
+      var arg2 = array[index];
+      var temp$z = ev.combine__Lscalm_Style__Lscalm_Style__Lscalm_Style($as_Lscalm_Style(arg1), $as_Lscalm_Style(arg2));
+      start$1 = temp$start;
+      z$2 = temp$z;
+      continue _foldl
+    };
+    var jsx$3 = z$2;
+    break
+  };
+  var jsx$2 = new $c_Lscalm_Attribute().init___T__T("style", $as_Lscalm_Style(jsx$3).value$1);
+  var jsx$1 = new $c_Lscalm_Attribute().init___T__T("id", "mario");
+  var value = ((("character " + verb) + " ") + dir);
+  var attrs = new $c_sjs_js_WrappedArray().init___sjs_js_Array([jsx$2, jsx$1, new $c_Lscalm_Attribute().init___T__T("class", value)]);
   var children = $m_sci_Nil$();
-  var children$1 = new $c_sjs_js_WrappedArray().init___sjs_js_Array([new $c_Lscalm_Tag().init___T__sc_Seq__sc_Seq("img", attrs, children)]);
-  return new $c_Lscalm_Tag().init___T__sc_Seq__sc_Seq("div", attrs$1, children$1)
-});
-$c_Lmario_Main$.prototype.getRelativePosition__Lmario_Main$Mario__D__D__T2 = (function(model, screenX, screenY) {
-  var posX = ((((-85.0) + screenX) / 2) + model.x$1);
-  var posY = (((-85.0) + screenY) - model.y$1);
-  return new $c_s_Tuple2$mcDD$sp().init___D__D(posX, posY)
+  return new $c_Lscalm_Tag().init___T__sc_Seq__sc_Seq("div", attrs, children)
 });
 $c_Lmario_Main$.prototype.init__T2 = (function() {
   return new $c_T2().init___O__O(new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(0.0, 0.0, 0.0, 0.0, $m_Lmario_Main$Right$()), $m_Lscalm_Cmd$Empty$())
 });
+$c_Lmario_Main$.prototype.whereIsTheTouch$1__p1__T2__D__D__T2 = (function(pos, posX$1, posY$1) {
+  if ((pos === null)) {
+    throw new $c_s_MatchError().init___O(pos)
+  };
+  var x = pos.$$und1$mcD$sp__D();
+  var y = pos.$$und2$mcD$sp__D();
+  return new $c_s_Tuple2$mcZZ$sp().init___Z__Z((posX$1 < (x / 3)), (posY$1 < (y / 3)))
+});
 $c_Lmario_Main$.prototype.subscriptions__Lmario_Main$Mario__Lscalm_Sub = (function(model) {
-  var keyLeftPressSub = $m_Lmario_Effects$().keyPressSub__I__O__Lscalm_Sub(37, $m_Lmario_Main$ArrowLeftPressed$());
-  var keyRightPressSub = $m_Lmario_Effects$().keyPressSub__I__O__Lscalm_Sub(39, $m_Lmario_Main$ArrowRightPressed$());
-  var keyLeftReleaseSub = $m_Lmario_Effects$().keyReleaseSub__I__O__Lscalm_Sub(37, $m_Lmario_Main$ArrowLeftReleased$());
-  var keyRightReleaseSub = $m_Lmario_Effects$().keyReleaseSub__I__O__Lscalm_Sub(39, $m_Lmario_Main$ArrowRightReleased$());
-  var keyUpSub = $m_Lmario_Effects$().keyPressSub__I__O__Lscalm_Sub(38, $m_Lmario_Main$ArrowUpPressed$());
-  var fpsSub = $m_Lmario_Effects$().requestAnimationFrameSub$1.map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
+  var this$16 = $m_Lcats_syntax_package$all$();
+  var this$13 = $m_Lcats_syntax_package$all$();
+  var this$10 = $m_Lcats_syntax_package$all$();
+  var this$7 = $m_Lcats_syntax_package$all$();
+  var this$4 = $m_Lcats_syntax_package$all$();
+  var this$1 = $m_Lcats_syntax_package$all$();
+  var target = $m_Lmario_Effects$().keyPressSub__I__O__Lscalm_Sub(37, $m_Lmario_Main$ArrowLeftPressed$());
+  var tc = $m_Lscalm_Sub$().monoidKSub$1;
+  var this$2 = new $c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4().init___Lcats_SemigroupK$ToSemigroupKOps__O__Lcats_SemigroupK(this$1, target, tc);
+  var y = $m_Lmario_Effects$().keyPressSub__I__O__Lscalm_Sub(39, $m_Lmario_Main$ArrowRightPressed$());
+  var x = this$2.self$1;
+  var sub1 = $as_Lscalm_Sub(x);
+  var target$1 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(sub1, y);
+  var tc$1 = $m_Lscalm_Sub$().monoidKSub$1;
+  var this$5 = new $c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4().init___Lcats_SemigroupK$ToSemigroupKOps__O__Lcats_SemigroupK(this$4, target$1, tc$1);
+  var y$1 = $m_Lmario_Effects$().keyReleaseSub__I__O__Lscalm_Sub(37, $m_Lmario_Main$ArrowLeftReleased$());
+  var x$1 = this$5.self$1;
+  var sub1$1 = $as_Lscalm_Sub(x$1);
+  var target$2 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(sub1$1, y$1);
+  var tc$2 = $m_Lscalm_Sub$().monoidKSub$1;
+  var this$8 = new $c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4().init___Lcats_SemigroupK$ToSemigroupKOps__O__Lcats_SemigroupK(this$7, target$2, tc$2);
+  var y$2 = $m_Lmario_Effects$().keyReleaseSub__I__O__Lscalm_Sub(39, $m_Lmario_Main$ArrowRightReleased$());
+  var x$2 = this$8.self$1;
+  var sub1$2 = $as_Lscalm_Sub(x$2);
+  var target$3 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(sub1$2, y$2);
+  var tc$3 = $m_Lscalm_Sub$().monoidKSub$1;
+  var this$11 = new $c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4().init___Lcats_SemigroupK$ToSemigroupKOps__O__Lcats_SemigroupK(this$10, target$3, tc$3);
+  var y$3 = $m_Lmario_Effects$().keyPressSub__I__O__Lscalm_Sub(38, $m_Lmario_Main$ArrowUpPressed$());
+  var x$3 = this$11.self$1;
+  var sub1$3 = $as_Lscalm_Sub(x$3);
+  var target$4 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(sub1$3, y$3);
+  var tc$4 = $m_Lscalm_Sub$().monoidKSub$1;
+  var this$14 = new $c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4().init___Lcats_SemigroupK$ToSemigroupKOps__O__Lcats_SemigroupK(this$13, target$4, tc$4);
+  var y$4 = $m_Lmario_Effects$().requestAnimationFrameSub$1.map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
     return (function(x$4$2) {
       $uD(x$4$2);
       return $m_Lmario_Main$PassageOfTime$()
     })
   })(this)));
-  var this$1 = new $c_Lscalm_Sub$Combine().init___Lscalm_Sub__Lscalm_Sub(fpsSub, keyUpSub);
-  var this$2 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$1, keyLeftPressSub);
-  var this$3 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$2, keyRightPressSub);
-  var this$4 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$3, keyLeftReleaseSub);
-  return $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(this$4, keyRightReleaseSub)
+  var x$5 = this$14.self$1;
+  var sub1$4 = $as_Lscalm_Sub(x$5);
+  var target$5 = $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(sub1$4, y$4);
+  var tc$5 = $m_Lscalm_Sub$().monoidKSub$1;
+  var this$17 = new $c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4().init___Lcats_SemigroupK$ToSemigroupKOps__O__Lcats_SemigroupK(this$16, target$5, tc$5);
+  var y$5 = this.inputsByTouchEventSub__Lmario_Main$Mario__Lscalm_Sub(model);
+  var x$6 = this$17.self$1;
+  var sub1$5 = $as_Lscalm_Sub(x$6);
+  return $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(sub1$5, y$5)
 });
 $c_Lmario_Main$.prototype.main__AT__V = (function(args) {
   var _node = $m_Lorg_scalajs_dom_package$().document__Lorg_scalajs_dom_raw_HTMLDocument().querySelector("#mario");
   new $c_Lscalm_Scalm$$anon$1().init___Lscalm_App__Lorg_scalajs_dom_raw_Element(this, _node)
 });
+$c_Lmario_Main$.prototype.inputsByTouchEventSub__Lmario_Main$Mario__Lscalm_Sub = (function(model) {
+  var x1 = this.relativePositionWithScreen__D__D__Lmario_Main$Mario__T2($uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerWidth), $uD($m_Lorg_scalajs_dom_package$().window__Lorg_scalajs_dom_raw_Window().innerHeight), model);
+  if ((x1 === null)) {
+    throw new $c_s_MatchError().init___O(x1)
+  };
+  var posX = x1.$$und1$mcD$sp__D();
+  var posY = x1.$$und2$mcD$sp__D();
+  var UNDER_FRONT_MARIO = new $c_s_Tuple2$mcZZ$sp().init___Z__Z(true, true);
+  var UNDER_BEHIND_MARIO = new $c_s_Tuple2$mcZZ$sp().init___Z__Z(false, true);
+  var this$1 = $m_Lcats_syntax_package$all$();
+  var target = $m_Lmario_Effects$().touchStartSub$1.map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, posX$2, posY$2) {
+    return (function(pos$2) {
+      var pos = $as_T2(pos$2);
+      return $this.whereIsTheTouch$1__p1__T2__D__D__T2(pos, posX$2, posY$2)
+    })
+  })(this, posX, posY))).map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2, UNDER_FRONT_MARIO$1, UNDER_BEHIND_MARIO$1) {
+    return (function(x0$1$2) {
+      var x0$1 = $as_T2(x0$1$2);
+      return (((UNDER_FRONT_MARIO$1 === null) ? (x0$1 === null) : UNDER_FRONT_MARIO$1.equals__O__Z(x0$1)) ? $m_Lmario_Main$ArrowRightPressed$() : (((UNDER_BEHIND_MARIO$1 === null) ? (x0$1 === null) : UNDER_BEHIND_MARIO$1.equals__O__Z(x0$1)) ? $m_Lmario_Main$ArrowLeftPressed$() : $m_Lmario_Main$ArrowUpPressed$()))
+    })
+  })(this, UNDER_FRONT_MARIO, UNDER_BEHIND_MARIO)));
+  var tc = $m_Lscalm_Sub$().monoidKSub$1;
+  var this$5 = new $c_Lcats_SemigroupK$ToSemigroupKOps$$anon$4().init___Lcats_SemigroupK$ToSemigroupKOps__O__Lcats_SemigroupK(this$1, target, tc);
+  var y = $m_Lmario_Effects$().touchEndSub$1.map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3, posX$2$1, posY$2$1) {
+    return (function(pos$3$2) {
+      var pos$3 = $as_T2(pos$3$2);
+      return this$3.whereIsTheTouch$1__p1__T2__D__D__T2(pos$3, posX$2$1, posY$2$1)
+    })
+  })(this, posX, posY))).map__F1__Lscalm_Sub(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4, UNDER_FRONT_MARIO$2, UNDER_BEHIND_MARIO$2) {
+    return (function(x0$2$2) {
+      var x0$2 = $as_T2(x0$2$2);
+      return (((UNDER_FRONT_MARIO$2 === null) ? (x0$2 === null) : UNDER_FRONT_MARIO$2.equals__O__Z(x0$2)) ? $m_Lmario_Main$ArrowRightReleased$() : (((UNDER_BEHIND_MARIO$2 === null) ? (x0$2 === null) : UNDER_BEHIND_MARIO$2.equals__O__Z(x0$2)) ? $m_Lmario_Main$ArrowLeftReleased$() : $m_Lmario_Main$Void$()))
+    })
+  })(this, UNDER_FRONT_MARIO, UNDER_BEHIND_MARIO)));
+  var x = this$5.self$1;
+  var sub1 = $as_Lscalm_Sub(x);
+  return $f_Lscalm_Sub__combine__Lscalm_Sub__Lscalm_Sub(sub1, y)
+});
+$c_Lmario_Main$.prototype.relativePositionWithScreen__D__D__Lmario_Main$Mario__T2 = (function(screenX, screenY, model) {
+  var posX = (((100 * (screenX / 2)) / 300) + model.x$1);
+  var posY = (((100 * ((-200.0) + screenY)) / 300) - model.y$1);
+  return new $c_s_Tuple2$mcDD$sp().init___D__D(posX, posY)
+});
 $c_Lmario_Main$.prototype.update__Lmario_Main$Msg__Lmario_Main$Mario__T2 = (function(msg, model) {
   var x = $m_Lmario_Main$ArrowUpPressed$();
   if (((x === msg) && (model.y$1 === 0.0))) {
     var newModel = $as_Lmario_Main$Mario(this.jump$1.andThen__F1__F1(this.applyPhysics$1).apply__O__O(model));
-    return new $c_T2().init___O__O(newModel, $m_Lmario_Effects$Cmd$().playSound__T__O__Lscalm_Cmd("resources/jump-c-07.mp3", $m_Lmario_Main$Void$()))
+    return new $c_T2().init___O__O(newModel, $m_Lmario_Effects$Cmd$().playSound__T__Lscalm_Cmd("resources/jump-c-07.mp3"))
   } else {
     var x$3 = $m_Lmario_Main$ArrowLeftPressed$();
     if ((x$3 === msg)) {
@@ -13207,11 +13520,11 @@ $c_Lmario_Main$.prototype.update__Lmario_Main$Msg__Lmario_Main$Mario__T2 = (func
           var jsx$1 = false
         };
         if (jsx$1) {
-          var x$27 = model.x$1;
-          var x$28 = model.y$1;
-          var x$29 = model.vy$1;
-          var x$30 = model.dir$1;
-          var newModel$4 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$27, x$28, 0.0, x$29, x$30);
+          var x$29 = model.x$1;
+          var x$30 = model.y$1;
+          var x$31 = model.vy$1;
+          var x$32 = model.dir$1;
+          var newModel$4 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$29, x$30, 0.0, x$31, x$32);
           return new $c_T2().init___O__O(newModel$4, $m_Lscalm_Cmd$Empty$())
         } else {
           var x$11 = $m_Lmario_Main$ArrowRightReleased$();
@@ -13223,11 +13536,11 @@ $c_Lmario_Main$.prototype.update__Lmario_Main$Msg__Lmario_Main$Mario__T2 = (func
             var jsx$2 = false
           };
           if (jsx$2) {
-            var x$32 = model.x$1;
-            var x$33 = model.y$1;
-            var x$34 = model.vy$1;
-            var x$35 = model.dir$1;
-            var newModel$5 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$32, x$33, 0.0, x$34, x$35);
+            var x$34 = model.x$1;
+            var x$35 = model.y$1;
+            var x$36 = model.vy$1;
+            var x$37 = model.dir$1;
+            var newModel$5 = new $c_Lmario_Main$Mario().init___D__D__D__D__Lmario_Main$Direction(x$34, x$35, 0.0, x$36, x$37);
             return new $c_T2().init___O__O(newModel$5, $m_Lscalm_Cmd$Empty$())
           } else {
             var x$15 = $m_Lmario_Main$PassageOfTime$();
@@ -15077,6 +15390,46 @@ var $d_Lscalm_Scalm$$anon$1 = new $TypeData().initClass({
   Lsnabbdom_SnabbdomSyntax: 1
 });
 $c_Lscalm_Scalm$$anon$1.prototype.$classData = $d_Lscalm_Scalm$$anon$1;
+/** @constructor */
+function $c_Lscalm_Style$() {
+  $c_O.call(this);
+  this.empty$1 = null;
+  this.monoid$1 = null
+}
+$c_Lscalm_Style$.prototype = new $h_O();
+$c_Lscalm_Style$.prototype.constructor = $c_Lscalm_Style$;
+/** @constructor */
+function $h_Lscalm_Style$() {
+  /*<skip>*/
+}
+$h_Lscalm_Style$.prototype = $c_Lscalm_Style$.prototype;
+$c_Lscalm_Style$.prototype.init___ = (function() {
+  $n_Lscalm_Style$ = this;
+  this.empty$1 = ($m_Lscalm_Style$(), new $c_Lscalm_Style().init___T(""));
+  this.monoid$1 = new $c_Lscalm_Style$$anon$1().init___();
+  return this
+});
+$c_Lscalm_Style$.prototype.apply__T__T__Lscalm_Style = (function(name, value) {
+  $m_Lscalm_Style$();
+  var value$1 = new $c_s_StringContext().init___sc_Seq(new $c_sjs_js_WrappedArray().init___sjs_js_Array(["", ": ", ";"])).s__sc_Seq__T(new $c_sjs_js_WrappedArray().init___sjs_js_Array([name, value]));
+  return new $c_Lscalm_Style().init___T(value$1)
+});
+var $d_Lscalm_Style$ = new $TypeData().initClass({
+  Lscalm_Style$: 0
+}, false, "scalm.Style$", {
+  Lscalm_Style$: 1,
+  O: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lscalm_Style$.prototype.$classData = $d_Lscalm_Style$;
+var $n_Lscalm_Style$ = (void 0);
+function $m_Lscalm_Style$() {
+  if ((!$n_Lscalm_Style$)) {
+    $n_Lscalm_Style$ = new $c_Lscalm_Style$().init___()
+  };
+  return $n_Lscalm_Style$
+}
 function $isArrayOf_jl_Boolean(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.jl_Boolean)))
 }
@@ -19949,6 +20302,117 @@ var $d_Lorg_scalacheck_util_Pretty$Params = new $TypeData().initClass({
 });
 $c_Lorg_scalacheck_util_Pretty$Params.prototype.$classData = $d_Lorg_scalacheck_util_Pretty$Params;
 /** @constructor */
+function $c_Lscalm_Style() {
+  $c_O.call(this);
+  this.value$1 = null
+}
+$c_Lscalm_Style.prototype = new $h_O();
+$c_Lscalm_Style.prototype.constructor = $c_Lscalm_Style;
+/** @constructor */
+function $h_Lscalm_Style() {
+  /*<skip>*/
+}
+$h_Lscalm_Style.prototype = $c_Lscalm_Style.prototype;
+$c_Lscalm_Style.prototype.productPrefix__T = (function() {
+  return "Style"
+});
+$c_Lscalm_Style.prototype.productArity__I = (function() {
+  return 1
+});
+$c_Lscalm_Style.prototype.equals__O__Z = (function(x$1) {
+  if ((this === x$1)) {
+    return true
+  } else if ($is_Lscalm_Style(x$1)) {
+    var Style$1 = $as_Lscalm_Style(x$1);
+    return (this.value$1 === Style$1.value$1)
+  } else {
+    return false
+  }
+});
+$c_Lscalm_Style.prototype.productElement__I__O = (function(x$1) {
+  switch (x$1) {
+    case 0: {
+      return this.value$1;
+      break
+    }
+    default: {
+      throw new $c_jl_IndexOutOfBoundsException().init___T(("" + x$1))
+    }
+  }
+});
+$c_Lscalm_Style.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
+});
+$c_Lscalm_Style.prototype.init___T = (function(value) {
+  this.value$1 = value;
+  return this
+});
+$c_Lscalm_Style.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__I(this, (-889275714))
+});
+$c_Lscalm_Style.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
+});
+function $is_Lscalm_Style(obj) {
+  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lscalm_Style)))
+}
+function $as_Lscalm_Style(obj) {
+  return (($is_Lscalm_Style(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "scalm.Style"))
+}
+function $isArrayOf_Lscalm_Style(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lscalm_Style)))
+}
+function $asArrayOf_Lscalm_Style(obj, depth) {
+  return (($isArrayOf_Lscalm_Style(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscalm.Style;", depth))
+}
+var $d_Lscalm_Style = new $TypeData().initClass({
+  Lscalm_Style: 0
+}, false, "scalm.Style", {
+  Lscalm_Style: 1,
+  O: 1,
+  s_Product: 1,
+  s_Equals: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lscalm_Style.prototype.$classData = $d_Lscalm_Style;
+/** @constructor */
+function $c_Lscalm_Style$$anon$1() {
+  $c_O.call(this)
+}
+$c_Lscalm_Style$$anon$1.prototype = new $h_O();
+$c_Lscalm_Style$$anon$1.prototype.constructor = $c_Lscalm_Style$$anon$1;
+/** @constructor */
+function $h_Lscalm_Style$$anon$1() {
+  /*<skip>*/
+}
+$h_Lscalm_Style$$anon$1.prototype = $c_Lscalm_Style$$anon$1.prototype;
+$c_Lscalm_Style$$anon$1.prototype.init___ = (function() {
+  return this
+});
+$c_Lscalm_Style$$anon$1.prototype.combine__Lscalm_Style__Lscalm_Style__Lscalm_Style = (function(x, y) {
+  $m_Lscalm_Style$();
+  var x$1 = x.value$1;
+  var this$3 = new $c_sci_StringOps().init___T(x$1);
+  var x$2 = y.value$1;
+  var that = new $c_sci_StringOps().init___T(x$2);
+  var bf = $m_s_Predef$().StringCanBuildFrom$2;
+  var value = $as_T($f_sc_TraversableLike__$$plus$plus__sc_GenTraversableOnce__scg_CanBuildFrom__O(this$3, that, bf));
+  return new $c_Lscalm_Style().init___T(value)
+});
+var $d_Lscalm_Style$$anon$1 = new $TypeData().initClass({
+  Lscalm_Style$$anon$1: 0
+}, false, "scalm.Style$$anon$1", {
+  Lscalm_Style$$anon$1: 1,
+  O: 1,
+  Lcats_kernel_Monoid: 1,
+  Lcats_kernel_Semigroup: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Lscalm_Style$$anon$1.prototype.$classData = $d_Lscalm_Style$$anon$1;
+/** @constructor */
 function $c_Lscalm_Sub$$anon$2() {
   $c_O.call(this)
 }
@@ -24096,65 +24560,6 @@ function $isArrayOf_Lscalm_Event(obj, depth) {
 function $asArrayOf_Lscalm_Event(obj, depth) {
   return (($isArrayOf_Lscalm_Event(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscalm.Event;", depth))
 }
-/** @constructor */
-function $c_Lscalm_Prop() {
-  $c_O.call(this);
-  this.name$1 = null;
-  this.value$1 = null
-}
-$c_Lscalm_Prop.prototype = new $h_O();
-$c_Lscalm_Prop.prototype.constructor = $c_Lscalm_Prop;
-/** @constructor */
-function $h_Lscalm_Prop() {
-  /*<skip>*/
-}
-$h_Lscalm_Prop.prototype = $c_Lscalm_Prop.prototype;
-$c_Lscalm_Prop.prototype.init___T__T = (function(name, value) {
-  this.name$1 = name;
-  this.value$1 = value;
-  return this
-});
-$c_Lscalm_Prop.prototype.productPrefix__T = (function() {
-  return "Prop"
-});
-$c_Lscalm_Prop.prototype.productArity__I = (function() {
-  return 2
-});
-$c_Lscalm_Prop.prototype.equals__O__Z = (function(x$1) {
-  if ((this === x$1)) {
-    return true
-  } else if ($is_Lscalm_Prop(x$1)) {
-    var Prop$1 = $as_Lscalm_Prop(x$1);
-    return ((this.name$1 === Prop$1.name$1) && (this.value$1 === Prop$1.value$1))
-  } else {
-    return false
-  }
-});
-$c_Lscalm_Prop.prototype.productElement__I__O = (function(x$1) {
-  switch (x$1) {
-    case 0: {
-      return this.name$1;
-      break
-    }
-    case 1: {
-      return this.value$1;
-      break
-    }
-    default: {
-      throw new $c_jl_IndexOutOfBoundsException().init___T(("" + x$1))
-    }
-  }
-});
-$c_Lscalm_Prop.prototype.toString__T = (function() {
-  return $m_sr_ScalaRunTime$().$$undtoString__s_Product__T(this)
-});
-$c_Lscalm_Prop.prototype.hashCode__I = (function() {
-  var this$2 = $m_s_util_hashing_MurmurHash3$();
-  return this$2.productHash__s_Product__I__I(this, (-889275714))
-});
-$c_Lscalm_Prop.prototype.productIterator__sc_Iterator = (function() {
-  return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
-});
 function $is_Lscalm_Prop(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lscalm_Prop)))
 }
@@ -24167,18 +24572,6 @@ function $isArrayOf_Lscalm_Prop(obj, depth) {
 function $asArrayOf_Lscalm_Prop(obj, depth) {
   return (($isArrayOf_Lscalm_Prop(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscalm.Prop;", depth))
 }
-var $d_Lscalm_Prop = new $TypeData().initClass({
-  Lscalm_Prop: 0
-}, false, "scalm.Prop", {
-  Lscalm_Prop: 1,
-  O: 1,
-  Lscalm_Attr: 1,
-  s_Product: 1,
-  s_Equals: 1,
-  s_Serializable: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Lscalm_Prop.prototype.$classData = $d_Lscalm_Prop;
 /** @constructor */
 function $c_Lscalm_Scalm$$anonfun$1() {
   $c_sr_AbstractPartialFunction.call(this)
@@ -24244,8 +24637,8 @@ $c_Lscalm_Scalm$$anonfun$2.prototype.isDefinedAt__Lscalm_Attr__Z = (function(x2)
 $c_Lscalm_Scalm$$anonfun$2.prototype.applyOrElse__Lscalm_Attr__F1__O = (function(x2, $default) {
   if ($is_Lscalm_Prop(x2)) {
     var x2$2 = $as_Lscalm_Prop(x2);
-    var n = x2$2.name$1;
-    var v = x2$2.value$1;
+    var n = x2$2.name__T();
+    var v = x2$2.value__T();
     return new $c_T2().init___O__O(n, v)
   } else {
     return $default.apply__O__O(x2)
@@ -26705,6 +27098,47 @@ var $d_ju_MissingFormatWidthException = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_ju_MissingFormatWidthException.prototype.$classData = $d_ju_MissingFormatWidthException;
+/** @constructor */
+function $c_s_Tuple2$mcZZ$sp() {
+  $c_T2.call(this);
+  this.$$und1$mcZ$sp$f = false;
+  this.$$und2$mcZ$sp$f = false
+}
+$c_s_Tuple2$mcZZ$sp.prototype = new $h_T2();
+$c_s_Tuple2$mcZZ$sp.prototype.constructor = $c_s_Tuple2$mcZZ$sp;
+/** @constructor */
+function $h_s_Tuple2$mcZZ$sp() {
+  /*<skip>*/
+}
+$h_s_Tuple2$mcZZ$sp.prototype = $c_s_Tuple2$mcZZ$sp.prototype;
+$c_s_Tuple2$mcZZ$sp.prototype.$$und2__O = (function() {
+  return this.$$und2$mcZ$sp$f
+});
+$c_s_Tuple2$mcZZ$sp.prototype.$$und1$mcZ$sp__Z = (function() {
+  return this.$$und1$mcZ$sp$f
+});
+$c_s_Tuple2$mcZZ$sp.prototype.$$und1__O = (function() {
+  return this.$$und1$mcZ$sp$f
+});
+$c_s_Tuple2$mcZZ$sp.prototype.init___Z__Z = (function(_1$mcZ$sp, _2$mcZ$sp) {
+  this.$$und1$mcZ$sp$f = _1$mcZ$sp;
+  this.$$und2$mcZ$sp$f = _2$mcZ$sp;
+  $c_T2.prototype.init___O__O.call(this, null, null);
+  return this
+});
+var $d_s_Tuple2$mcZZ$sp = new $TypeData().initClass({
+  s_Tuple2$mcZZ$sp: 0
+}, false, "scala.Tuple2$mcZZ$sp", {
+  s_Tuple2$mcZZ$sp: 1,
+  T2: 1,
+  O: 1,
+  s_Product2: 1,
+  s_Product: 1,
+  s_Equals: 1,
+  s_Serializable: 1,
+  Ljava_io_Serializable: 1
+});
+$c_s_Tuple2$mcZZ$sp.prototype.$classData = $d_s_Tuple2$mcZZ$sp;
 /** @constructor */
 function $c_s_math_Ordering$$anon$5() {
   $c_O.call(this);
@@ -42849,6 +43283,114 @@ var $d_scm_ArrayBuffer = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_scm_ArrayBuffer.prototype.$classData = $d_scm_ArrayBuffer;
+/** @constructor */
+function $c_Lcats_syntax_package$all$() {
+  $c_O.call(this)
+}
+$c_Lcats_syntax_package$all$.prototype = new $h_O();
+$c_Lcats_syntax_package$all$.prototype.constructor = $c_Lcats_syntax_package$all$;
+/** @constructor */
+function $h_Lcats_syntax_package$all$() {
+  /*<skip>*/
+}
+$h_Lcats_syntax_package$all$.prototype = $c_Lcats_syntax_package$all$.prototype;
+$c_Lcats_syntax_package$all$.prototype.init___ = (function() {
+  return this
+});
+var $d_Lcats_syntax_package$all$ = new $TypeData().initClass({
+  Lcats_syntax_package$all$: 0
+}, false, "cats.syntax.package$all$", {
+  Lcats_syntax_package$all$: 1,
+  O: 1,
+  Lcats_syntax_AllSyntax: 1,
+  Lcats_syntax_ApplicativeSyntax: 1,
+  Lcats_syntax_ApplicativeErrorSyntax: 1,
+  Lcats_syntax_ApplySyntax: 1,
+  Lcats_syntax_ApplySyntax1: 1,
+  Lcats_syntax_BifunctorSyntax: 1,
+  Lcats_functor_Bifunctor$ToBifunctorOps: 1,
+  Lcats_syntax_BifoldableSyntax: 1,
+  Lcats_Bifoldable$ToBifoldableOps: 1,
+  Lcats_syntax_BitraverseSyntax: 1,
+  Lcats_syntax_BitraverseSyntax1: 1,
+  Lcats_syntax_CartesianSyntax: 1,
+  Lcats_syntax_CartesianSyntax1: 1,
+  Lcats_syntax_CoflatMapSyntax: 1,
+  Lcats_CoflatMap$ToCoflatMapOps: 1,
+  Lcats_syntax_CoflatMapSyntax1: 1,
+  Lcats_syntax_ComonadSyntax: 1,
+  Lcats_Comonad$ToComonadOps: 1,
+  Lcats_syntax_ComonadSyntax1: 1,
+  Lcats_syntax_ComposeSyntax: 1,
+  Lcats_arrow_Compose$ToComposeOps: 1,
+  Lcats_syntax_ContravariantSyntax: 1,
+  Lcats_functor_Contravariant$ToContravariantOps: 1,
+  Lcats_syntax_ContravariantSyntax1: 1,
+  Lcats_syntax_CoproductSyntax: 1,
+  Lcats_syntax_EitherSyntax: 1,
+  Lcats_syntax_EqSyntax: 1,
+  Lcats_syntax_FlatMapSyntax: 1,
+  Lcats_FlatMap$ToFlatMapOps: 1,
+  Lcats_syntax_FlatMapSyntax1: 1,
+  Lcats_syntax_FoldableSyntax: 1,
+  Lcats_Foldable$ToFoldableOps: 1,
+  Lcats_syntax_FoldableSyntax1: 1,
+  Lcats_syntax_FunctorSyntax: 1,
+  Lcats_Functor$ToFunctorOps: 1,
+  Lcats_syntax_FunctorSyntax1: 1,
+  Lcats_syntax_FunctorFilterSyntax: 1,
+  Lcats_FunctorFilter$ToFunctorFilterOps: 1,
+  Lcats_syntax_FunctorFilterSyntax1: 1,
+  Lcats_syntax_GroupSyntax: 1,
+  Lcats_syntax_SemigroupSyntax: 1,
+  Lcats_syntax_InvariantSyntax: 1,
+  Lcats_functor_Invariant$ToInvariantOps: 1,
+  Lcats_syntax_InvariantSyntax1: 1,
+  Lcats_syntax_ListSyntax: 1,
+  Lcats_syntax_MonadCombineSyntax: 1,
+  Lcats_syntax_MonadErrorSyntax: 1,
+  Lcats_syntax_MonadFilterSyntax: 1,
+  Lcats_MonadFilter$ToMonadFilterOps: 1,
+  Lcats_syntax_MonadFilterSyntax1: 1,
+  Lcats_syntax_MonoidSyntax: 1,
+  Lcats_syntax_OptionSyntax: 1,
+  Lcats_syntax_OrderSyntax: 1,
+  Lcats_syntax_PartialOrderSyntax: 1,
+  Lcats_syntax_ProfunctorSyntax: 1,
+  Lcats_functor_Profunctor$ToProfunctorOps: 1,
+  Lcats_syntax_ReducibleSyntax: 1,
+  Lcats_Reducible$ToReducibleOps: 1,
+  Lcats_syntax_ReducibleSyntax1: 1,
+  Lcats_syntax_SemigroupKSyntax: 1,
+  Lcats_SemigroupK$ToSemigroupKOps: 1,
+  Lcats_syntax_SemigroupKSyntax1: 1,
+  Lcats_syntax_ShowSyntax: 1,
+  Lcats_Show$ToShowOps: 1,
+  Lcats_syntax_SplitSyntax: 1,
+  Lcats_arrow_Split$ToSplitOps: 1,
+  Lcats_syntax_StrongSyntax: 1,
+  Lcats_functor_Strong$ToStrongOps: 1,
+  Lcats_syntax_TransLiftSyntax: 1,
+  Lcats_syntax_TraverseFilterSyntax: 1,
+  Lcats_TraverseFilter$ToTraverseFilterOps: 1,
+  Lcats_syntax_TraverseFilterSyntax1: 1,
+  Lcats_syntax_TraverseSyntax: 1,
+  Lcats_Traverse$ToTraverseOps: 1,
+  Lcats_syntax_TraverseSyntax1: 1,
+  Lcats_syntax_TupleSyntax: 1,
+  Lcats_syntax_TupleCartesianSyntax: 1,
+  Lcats_syntax_ValidatedSyntax: 1,
+  Lcats_syntax_VectorSyntax: 1,
+  Lcats_syntax_WriterSyntax: 1
+});
+$c_Lcats_syntax_package$all$.prototype.$classData = $d_Lcats_syntax_package$all$;
+var $n_Lcats_syntax_package$all$ = (void 0);
+function $m_Lcats_syntax_package$all$() {
+  if ((!$n_Lcats_syntax_package$all$)) {
+    $n_Lcats_syntax_package$all$ = new $c_Lcats_syntax_package$all$().init___()
+  };
+  return $n_Lcats_syntax_package$all$
+}
 $e.org = ($e.org || {});
 $e.org.scalajs = ($e.org.scalajs || {});
 $e.org.scalajs.testinterface = ($e.org.scalajs.testinterface || {});
