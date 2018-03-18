@@ -244,7 +244,7 @@ const gamePads = createSub('gamePad', function(subscriber){
         right = !right;
         subscriber(new CustomEvent(ArrowRightPressed, {}))
     }
-    if(axisXNew <= 0.0 && right){
+    if(axisXNew < 0.0 && right){
         right = !right;
         subscriber(new CustomEvent(ArrowRightReleased, {}))
     }
@@ -252,7 +252,7 @@ const gamePads = createSub('gamePad', function(subscriber){
         left = !left;
         subscriber(new CustomEvent(ArrowLeftPressed, {}))
     }
-    if(axisXNew >= 0.0 && left){
+    if(axisXNew > 0.0 && left){
         left = !left;
         subscriber(new CustomEvent(ArrowLeftReleased, {}))
     }
@@ -261,7 +261,7 @@ const gamePads = createSub('gamePad', function(subscriber){
         up = !up;
         subscriber(new CustomEvent(ArrowUpPressed, {}))
     }
-    if(axisYNew >= 0.0 && up){
+    if(axisYNew > 0.0 && up){
         up = !up;
     }
   }
