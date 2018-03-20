@@ -3,34 +3,20 @@
 <head>
     <title>Jesse</title>
     <style type="text/css">
-    body{
+    *{
         margin: 0px;
         padding: 0px;
     }
-        canvas{
-          transform: scale(3.0, 3.0);
-          transform-origin: 0 0;
-        }
-    </style>
+      canvas{
+        image-rendering: 'pixelated';
+      }
+  </style>
 </head>
 <body>
    <!--  <button>||</button>
     <input type="range" min="0" max="1539" value="1539" step="1"> -->
     <canvas></canvas>
-<script type="text/javascript" src="main.js"></script>
-<script type="text/javascript">
-  (function(){
-    function resize(){
-      const scaleX =  window.innerWidth / 320;
-      const scaleY =  window.innerHeight / 180;
-      var canvas = document.querySelector('canvas');
-      canvas.style.transform = 'scale('+scaleX+','+scaleY+')';
-      canvas.style.transformOrigin = '0 0';
-    
-    }
-    window.onresize = resize;
-    resize();
-  })();
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
 </body>
 </html>

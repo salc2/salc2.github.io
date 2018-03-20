@@ -1,3 +1,4 @@
+PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 (function(){
 
   function startRuntime(update, render, subscriptions, model){
@@ -44,39 +45,71 @@ function partitionById(subsN, subsC){
   onEvent(new CustomEvent('start', {'detail': ''}))
 }
 
-  
-var canvas = document.querySelector('canvas');
-var ctx = canvas.getContext('2d');
-canvas.width = 320;
-canvas.height = 180;
-document.body.appendChild(canvas);
-const floorY = 180-35;
+var  tiledMap = { "height":9,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+         "height":9,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":16,
+         "x":0,
+         "y":0
+        }],
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.1.3",
+ "tileheight":20,
+ "tilesets":[
+        {
+         "columns":2,
+         "firstgid":1,
+         "image":"base_map_test.png",
+         "imageheight":20,
+         "imagewidth":40,
+         "margin":0,
+         "name":"base_map_test",
+         "spacing":0,
+         "tilecount":2,
+         "tileheight":20,
+         "tilewidth":20
+        }],
+ "tilewidth":20,
+ "type":"map",
+ "version":1,
+ "width":16
+};
+var canvas = document.querySelector("canvas");
+var stage = new PIXI.Container();
+var renderer = PIXI.autoDetectRenderer(
+320,
+180,
+{view:canvas, antialias: false, transparent: true, resolution:3}
+);  
 
-var mario_walk_right = new Image
-mario_walk_right.src = "mario_right_walking.png";
 
-var mario_walk_left = new Image
-mario_walk_left.src = "mario_left_walking.png";
-
-
-var mario_stand_right = new Image
-mario_stand_right.src = "right.gif";
-
-var mario_stand_left = new Image
-mario_stand_left.src = "left.gif";
-
-var mario_jump_right = new Image
-mario_jump_right.src = "jump_right.gif";
-
-var mario_jump_left = new Image
-mario_jump_left.src = "jump_left.gif";
-
+let id = [];
+let mario = {};
 var jump_audio = new Audio
 jump_audio.src = "jump-c-07.mp3";
 
-const model = {x: 320 / 2, y:  floorY, vx: 0, vy: 0 ,dir: 'right', t: 0.0};
 
-var walking = [{"x":0,"y":0,"w":27,"h":27},{"x":27,"y":0,"w":27,"h":27},{"x":54,"y":0,"w":27,"h":27},{"x":81,"y":0,"w":27,"h":27},{"x":108,"y":0,"w":27,"h":27},{"x":135,"y":0,"w":27,"h":27},{"x":162,"y":0,"w":27,"h":27},{"x":189,"y":0,"w":27,"h":27}] 
+PIXI.loader
+.add("mario.json")
+.add("base_map_test.png")
+.load(function(){
+   id = PIXI.loader.resources["mario.json"].textures; 
+   mario = new PIXI.Sprite(id["stand_right.gif"]);
+   stage.addChild(mario);
+});
+
+const floorY = 180-35;
+
+const model = {x: 320 / 2, y:  floorY, vx: 0, vy: 0 ,dir: 'right', t: 0.0};
 
 
 const PassageOfTime = 'PassageOfTime';
@@ -134,32 +167,62 @@ const jump = (model) => {
 } 
 const applyPhysics = (model) => applyGravity(applyMotion(model))
 
+function getTile(col, row) {
+    return tiledMap.layers[0].data[row * tiledMap.width + col];
+  }
+
+
+var texs = {};
+
+function renderMap(){
+
+
+ for (var c = 0; c < tiledMap.width; c++) {
+ for (var r = 0; r < tiledMap.height; r++) {
+   var tile = getTile(c, r);
+    if (tile !== 0) { // 0 => empty tile
+
+
+      //rectangle.x = 0  * (tile - 1) * tiledMap.tileheight;
+
+      const text = new PIXI.Texture(PIXI.loader.resources["base_map_test.png"], new PIXI.Rectangle((tile - 1) * tiledMap.tileheight, 0, 20, 20));
+
+      const s = new PIXI.Sprite(text);
+      s.x = c * tiledMap.tileheight;
+      s.y = r * tiledMap.tileheight;
+      
+      stage.addChild(s);
+
+      // context.drawImage(
+      //   map, // image
+      //   (tile - 1) * tiledMap.tsize, // source x
+      //   0, // source y
+      //   tiledMap.tsize, // source width
+      //   tiledMap.tsize, // source height
+      //   c * tiledMap.tileheight, // target x
+      //   r * tiledMap.tileheight, // target y
+      //   tiledMap.tsize, // target width
+      //   tiledMap.tsize // target height
+      // );
+
+
+   }
+ }
+}
+}
+
 function render(model){
-  ctx.fillStyle = "#1099bb";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  var i = parseInt((model.t % (8*80))/80)
-  var img = walking[i];
+  mario.x = model.x;
+  mario.y = model.y;
   if(model.y < floorY){
-    if(model.dir === 'right'){
-        ctx.drawImage(mario_jump_right,model.x,model.y);
-      }else{
-        ctx.drawImage(mario_jump_left,model.x,model.y);
-      }
+    mario.texture = id['jump_'+model.dir+'.gif'];
+  }else if(model.vx !== 0.0){
+    const i = parseInt((model.t % (8*80))/80);
+    mario.texture = id['frame_'+i+'_'+model.dir+'-0.08s.gif'];
+  }else {
+    mario.texture = id['stand_'+model.dir+'.gif'];
   }
-  if(model.vx > 0){
-    ctx.drawImage(mario_walk_right,img.x,img.y,img.w,img.h,model.x,model.y,27,27);
-  }else if(model.vx === 0){
-      if(model.dir === 'right'){
-        ctx.drawImage(mario_stand_right,model.x,model.y);
-      }else{
-        ctx.drawImage(mario_stand_left,model.x,model.y);
-      }
-    }else{
-    ctx.drawImage(mario_walk_left,img.x,img.y,img.w,img.h,model.x,model.y,27,27);
-  }
-  ctx.imageSmoothingEnabled = false;
-  ctx.webkitImageSmoothingEnabled = false;
-  canvas.style.imageRendering = 'pixelated';
+  renderer.render(stage);
 }
 
 function empty(){
@@ -198,6 +261,47 @@ function createSub(name,cancellable){
   return [name, cancellable];
 }
 
+const gamePads = createSub('gamePad', function(subscriber){
+  var left = false;
+  var right = false;
+  var up = false;
+
+  var id = setInterval(function(){
+    var gp = navigator.getGamepads()[0];
+  if(gp){
+    const axisXNew = gp.axes[0], axisYNew = gp.axes[1];
+    if(axisXNew > 0.1 && !right){
+        right = !right;
+        subscriber(new CustomEvent(ArrowRightPressed, {}))
+    }
+    if(axisXNew <= 0.0 && right){
+        right = !right;
+        subscriber(new CustomEvent(ArrowRightReleased, {}))
+    }
+    if(axisXNew < -0.1 && !left){
+        left = !left;
+        subscriber(new CustomEvent(ArrowLeftPressed, {}))
+    }
+    if(axisXNew >= 0.0 && left){
+        left = !left;
+        subscriber(new CustomEvent(ArrowLeftReleased, {}))
+    }
+
+    if(axisYNew < -0.1 && !up){
+        up = !up;
+        subscriber(new CustomEvent(ArrowUpPressed, {}))
+    }
+    if(axisYNew >= 0.0 && up){
+        up = !up;
+    }
+  }
+}, 33);
+  
+() => {
+  clearInterval(id);
+}
+});
+
 const presssEvents = createSub('pressEvents', function(subscriber){
   const handler = (e) => {
   switch(e.keyCode){
@@ -229,47 +333,6 @@ const releaseEvents = createSub('releaseEvents', function(subscriber){
 }; 
   window.addEventListener('keyup', handler, true);
   () => window.removeEventListener('keyup', handler, true);
-});
-
-const gamePads = createSub('gamePad', function(subscriber){
-  var left = false;
-  var right = false;
-  var up = false;
-
-  var id = setInterval(function(){
-    var gp = navigator.getGamepads()[0];
-  if(gp){
-    const axisXNew = gp.axes[0], axisYNew = gp.axes[1];
-    if(axisXNew > 0.1 && !right){
-        right = !right;
-        subscriber(new CustomEvent(ArrowRightPressed, {}))
-    }
-    if(axisXNew <= 0.01 && right){
-        right = !right;
-        subscriber(new CustomEvent(ArrowRightReleased, {}))
-    }
-    if(axisXNew < -0.1 && !left){
-        left = !left;
-        subscriber(new CustomEvent(ArrowLeftPressed, {}))
-    }
-    if(axisXNew >= 0.0 && left){
-        left = !left;
-        subscriber(new CustomEvent(ArrowLeftReleased, {}))
-    }
-
-    if(axisYNew < -0.1 && !up){
-        up = !up;
-        subscriber(new CustomEvent(ArrowUpPressed, {}))
-    }
-    if(axisYNew >= 0.0 && up){
-        up = !up;
-    }
-  }
-}, 33);
-  
-() => {
-  clearInterval(id);
-}
 });
 
 function subscriptions(model){
@@ -375,6 +438,9 @@ function subscriptions(model){
   //startRuntime(debugger_update, debugger_render, debugger_subscriptions, debug_model);
 
  startRuntime(update, render, subscriptions, model);
+
+
+
 
 
 })();
