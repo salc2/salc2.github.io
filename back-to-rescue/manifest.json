@@ -3,15 +3,15 @@
     "name": "Back to the rescue",
     "icons": [
       {
-        "src": "/bot.png",
+        "src": "/back-to-rescue/bot.png",
         "type": "image/png",
         "sizes": "20x40"
       }
     ],
     "orientation": "landscape",
-    "start_url": "/index.html",
+    "start_url": "/back-to-rescue/index.html",
     "background_color": "#3367D6",
     "display": "standalone",
-    "scope": "/",
+    "scope": "/back-to-rescue/",
     "theme_color": "#3367D6"
   }
